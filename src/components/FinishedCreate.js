@@ -1,3 +1,5 @@
+import React from 'react'
+
 function FinishedCreate() {
     return (
       <div className="FinishedCreate">
@@ -10,4 +12,4 @@ function FinishedCreate() {
     );
   }
   
-  export default FinishedCreate;
+export default FinishedCreate;
