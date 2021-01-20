@@ -36,3 +36,51 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* NEW CSS (RUBEN) */
+ul {
+  list-style: none;
+}
+
+.navbar {
+  display: inline-block;
+  width: 100%;
+  border: #282c34 solid 2px;
+}
+
+.instruction-box {
+  display: inline-block;
+  border: rgb(0, 0, 0) 1px solid;
+  border-radius: 15px;
+  width: 800px;
+  height: 350px;
+}
+
+.image-box {
+  display: inline-block;
+  border: rgb(0, 0, 0) 1px solid;
+  border-radius: 15px;
+  width: 300px;
+  height: 200px;
+  margin: 25px;
+}
+.words-box {
+  display: inline-block;
+  border: rgb(0, 0, 0) 1px solid;
+  border-radius: 15px;
+  width: 300px;
+  height: 200px;
+  margin: 25px;
+}
+
+button {
+  margin:15px;
+}
+
+.six-box{
+  font-size:xx-large;
+  text-align: center;
+  width: 300px;
+  height: 75px;
+}
