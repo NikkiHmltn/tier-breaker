@@ -1,7 +1,7 @@
 function CreatePoll() {
     return (
       <div className="CreatePoll">
-        hi
+        Create Poll HERE!
       </div>
     );
   }
