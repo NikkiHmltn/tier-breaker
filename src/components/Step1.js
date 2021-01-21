@@ -2,7 +2,13 @@ import React, {Component} from 'react'
 import M from 'materialize-css'
 
 export default class Step1 extends Component {
-    
+    componentDidMount() {
+        console.log('in mount')
+        let collapsible = document.querySelectorAll(".collapsible");
+        
+        M.AutoInit(); 
+        M.Collapsible.init(collapsible, {});
+      }
     render() {
         
       if (this.props.currentStep !== 1) { // Prop: The current step
@@ -23,42 +29,42 @@ export default class Step1 extends Component {
           />
         
           <div className="input-field">
-          <select name="options" id="options">
+          <select name="options" id="options" onChange={this.props.handleChange}>
             <option>Select One</option>
-            <option value={this.props.options}>2</option>
-            <option value={this.props.options}>4</option>
-            <option value={this.props.options}>8</option>
-            <option value={this.props.options}>16</option>
-            <option value={this.props.options}>32</option>
+            <option value="2" >2</option>
+            <option value="4" >4</option>
+            <option value="8">8</option>
+            <option value="16">16</option>
+            <option value="32">32</option>
           </select>
           <label htmlFor="options">How many Tier 1 items do you want?</label>
           </div>
         <div className="input-field">
-          <select name="duration" id="duration">
+          <select name="duration" id="duration"onChange={this.props.handleChange}>
             <option>Select One</option>
-            <option value={this.props.duration}>1 day</option>
-            <option value={this.props.duration}>2 days</option>
-            <option value={this.props.duration}>3 days</option>
-            <option value={this.props.duration}>4 days</option>
-            <option value={this.props.duration}>5 days</option>
-            <option value={this.props.duration}>6 days</option>
-            <option value={this.props.duration}>7 days</option>
+            <option value="1">1 day</option>
+            <option value="2">2 days</option>
+            <option value="3">3 days</option>
+            <option value="4">4 days</option>
+            <option value="5">5 days</option>
+            <option value="6">6 days</option>
+            <option value="7">7 days</option>
           </select>
           <label htmlFor="duration">Voting Duration</label>
         </div>
           <div className="input-field">
-          <select name="display" id="display">
+          <select name="display" id="display" onChange={this.props.handleChange}>
             <option>Select One</option>
-            <option value={this.props.display}>Top 3</option>
-            <option value={this.props.display}>Full Bracket</option>
-            <option value={this.props.display}>Just Winner</option>
+            <option value="Top">Top 3</option>
+            <option value="Full">Full Bracket</option>
+            <option value="Winner">Just Winner</option>
           </select>
           <label htmlFor="display">Final Results Display</label>
           </div>
         <div className="switch">
             <label>
                 Public
-                <input type="checkbox" />
+                <input type="checkbox" onChange={this.props.handleChange}/>
                 <span style={{backgroundColor: "pink"}} className="lever"></span>
                 Private
             </label>

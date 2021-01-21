@@ -11,7 +11,7 @@ export default class CreatePoll extends Component {
       this.state = {
         currentStep: 1, // Default is Step 1
         duration: '',
-        option: '',
+        options: '',
         title: '', 
         display: '',
       }
@@ -43,7 +43,11 @@ export default class CreatePoll extends Component {
 
     // Use the submitted data to set the state
     handleChange(event) {
+      console.log(event.target)
       const {name, value} = event.target
+      console.log(name)
+      console.log(value)
+      console.log(this.state)
       this.setState({
         [name]: value
       })    
@@ -52,7 +56,7 @@ export default class CreatePoll extends Component {
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       event.preventDefault()
-      const { duration, option, title, display } = this.state
+      const { duration, options, title, display } = this.state
     }
 
   componentDidUpdate() {
@@ -62,25 +66,21 @@ export default class CreatePoll extends Component {
 
 get previousButton(){
   let currentStep = this.state.currentStep;
-  // If the current step is not 1, then render the "previous" button
   if(currentStep !==1){
     return (
       <a class="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
     )
   }
-  // ...else return nothing
   return null;
 }
 
 get nextButton(){
   let currentStep = this.state.currentStep;
-  // If the current step is not 3, then render the "next" button
-  if(currentStep <3){
+  if(currentStep <2){
     return (
       <a class="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
     )
   }
-  // ...else render nothing
   return null;
 }
     render() {  
@@ -88,19 +88,21 @@ get nextButton(){
       return (
         <React.Fragment>
         <h1>Create a Bracket</h1>
-        
           
         <form onSubmit={this.handleSubmit}>
           <Step1 
             currentStep={this.state.currentStep} 
             handleChange={this.handleChange}
-            email={this.state.email}
+            duration={this.state.duration}
+            options={this.state.options}
+            title={this.state.title} 
+            display={this.state.display}
           />
-          {/* <Step2 
+          <Step2 
             currentStep={this.state.currentStep} 
             handleChange={this.handleChange}
-            username={this.state.username}
-          /> */}
+            options={this.state.options}
+          />
           {this.previousButton}
           {this.nextButton}
         </form>
