@@ -1,0 +1,12 @@
+.brackets {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+}
+
+.bracket-options {
+    display: flex;
+    width: 60vw;
+    margin: 0 auto;
+    padding: 10px;
+}
