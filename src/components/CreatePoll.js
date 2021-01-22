@@ -68,7 +68,7 @@ get previousButton(){
   let currentStep = this.state.currentStep;
   if(currentStep !==1){
     return (
-      <a class="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
+      <a href="." className="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
     )
   }
   return null;
@@ -78,7 +78,7 @@ get nextButton(){
   let currentStep = this.state.currentStep;
   if(currentStep <2){
     return (
-      <a class="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
+      <a href="." className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
     )
   }
   return null;
