@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import Step1 from './Step1'
 import Step2 from './Step2'
 import M from "materialize-css"
+import axios from 'axios'
+import {Redirect} from 'react-router-dom'
+
 
 export default class CreatePoll extends Component {
 
@@ -14,8 +17,11 @@ export default class CreatePoll extends Component {
         options: '',
         title: '', 
         display: '',
+        private: false,
+        list: [],
+        redirect: false,
       }
-      // Bind the submission to handleChange() 
+    
       this.handleChange = this.handleChange.bind(this)
       this._next = this._next.bind(this)
       this._prev = this._prev.bind(this)
@@ -25,7 +31,6 @@ export default class CreatePoll extends Component {
     }
     _next() {
       let currentStep = this.state.currentStep
-      // If the current step is 1 or 2, then add one on "next" button click
       currentStep = currentStep >= 2? 3: currentStep + 1
       this.setState({
         currentStep: currentStep
@@ -34,29 +39,54 @@ export default class CreatePoll extends Component {
 
     _prev() {
       let currentStep = this.state.currentStep
-      // If the current step is 2 or 3, then subtract one on "previous" button click
       currentStep = currentStep <= 1? 1: currentStep - 1
       this.setState({
         currentStep: currentStep
       })
     }
 
-    // Use the submitted data to set the state
     handleChange(event) {
-      console.log(event.target)
       const {name, value} = event.target
-      console.log(name)
-      console.log(value)
-      console.log(this.state)
+      if (name === 'private' && value === "on") {
+        this.setState({private: true})
+      }
+
+      if (name.includes('option')){
+        let index = name.split('-')[1]
+        let list = this.state.list.slice(0, this.state.list.length)
+        if (list.length === index) {
+          list[index-1] = value
+
+        } else {
+          list.push(value)
+        }
+        this.setState({list})
+      }
+
       this.setState({
         [name]: value
       })    
     }
-    
+
+
     // Trigger an alert on form submission
     handleSubmit = (event) => {
+      
       event.preventDefault()
-      const { duration, options, title, display } = this.state
+      let num_options = this.state.list.length
+      const newBracket = {
+        duration: this.state.duration,
+        title: this.state.title,
+        end_display: this.state.display,
+        private: this.state.private,
+        options_list: this.state.list,
+        num_options: num_options, 
+      }
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
+      .then((newBracket) => {
+        console.log(newBracket.data)
+        this.setState({redirect: true})
+      })
     }
 
   componentDidUpdate() {
@@ -85,6 +115,9 @@ get nextButton(){
 }
     render() {  
       M.AutoInit(); 
+      if (this.state.redirect) {
+        return <Redirect to='/finishedcreate' />
+      }
       return (
         <React.Fragment>
         <h1>Create a Bracket</h1>
@@ -102,6 +135,7 @@ get nextButton(){
             currentStep={this.state.currentStep} 
             handleChange={this.handleChange}
             options={this.state.options}
+            handleSubmit={this.handleSubmit}
           />
           {this.previousButton}
           {this.nextButton}
