@@ -1,0 +1,57 @@
+.card-body a {
+    width: 50px;
+    height: 40px;
+    background-color: rgb(233, 109, 109);
+    margin: 0px 10px;
+}
+
+.card-body h5 {
+    font-size: 20px;
+}
+
+.card-body p {
+    font-size: 10px;
+}
+
+.about{
+    display:flex;
+    justify-content:space-evenly;
+}
+
+.row-dev {
+    width: 1300px;
+    display:flex;
+    justify-content:space-evenly;
+}
+
+.card3 {
+    width: 300px;
+    border-radius: 15px;
+    background-color: rgb(224, 224, 224);
+    padding: 10px;
+    display:flex;
+    justify-content:space-evenly;
+    filter: drop-shadow(5px 4px 9px #919191);
+}
+
+.card-title-dev {
+    color: rgb(224, 84, 84);
+    font-size: 23px;
+    display:flex;
+    margin-top: -5px;
+    justify-content:space-evenly;
+}
+
+.desc {
+    font-size: 10px;
+    opacity: .75;
+    margin-top: -9px;
+    justify-content:space-evenly;
+}
+
+.github-img, .linkedin-img {
+    margin-top: 4px;
+    margin-left: -6px;
+    justify-self:space-evenly;
+    width: 31px;
+}
