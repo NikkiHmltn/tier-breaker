@@ -1,0 +1,23 @@
+.instruction-box {
+    display: inline-block;
+    border: rgb(0, 0, 0) 1px solid;
+    border-radius: 15px;
+    width: 800px;
+    height: 350px;
+  }
+
+  .words-box {
+    display: inline-block;
+    border: rgb(0, 0, 0) 1px solid;
+    border-radius: 15px;
+    width: 400px;
+    height: 200px;
+    margin: 25px;
+  }
+  
+  .six-box{
+    font-size:xx-large;
+    text-align: center;
+    width: 300px;
+    height: 75px;
+  }

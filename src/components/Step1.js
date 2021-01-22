@@ -64,13 +64,12 @@ export default class Step1 extends Component {
         <div className="switch">
             <label>
                 Public
-                <input type="checkbox" onChange={this.props.handleChange}/>
+                <input type="checkbox" name="private" onChange={this.props.handleChange}/>
                 <span style={{backgroundColor: "pink"}} className="lever"></span>
                 Private
             </label>
         </div>
         <br></br>
-        {/* <a class="waves-effect waves-light btn pink" href="">Next</a> */}
         </div>
 
       )
