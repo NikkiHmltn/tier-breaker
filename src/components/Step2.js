@@ -1,54 +1,54 @@
-import React, {Component} from 'react'
-import './Step2.css'
+import React, { Component } from 'react';
+import './css/Step2.css';
 
 export default class Step2 extends Component {
-
-    componentDidMount(){
-
-    } 
+    componentDidMount() {}
 
     render() {
-        console.log(this.props)
-      if (this.props.currentStep !== 2) { // Prop: The current step
-        return null
-      }
-      // The markup for the Step 1 UI
-      //get this.props.options
-      // multiply the array of div/input by that optionsnum/2
-      // set variable maybe for loops of options num and set that to the placeholder and name
-        let optionNum = parseInt(this.props.options)
-        let optionArray = Array.from({length: optionNum}, (_, i) => i + 1)
-     
-        //matchups empty array 
-        //iterate thru optionsArray
-        //for each div, {optionArray[i]}
-       
-        function makeInput(optionNumber) {
-            return <input type="text" placeholder={"Option " + optionNumber} name={"Option " + optionNumber} />
+        if (this.props.currentStep !== 2) {
+            // Prop: The current step
+            return null;
         }
 
-        const matchups = []
+        let optionNum = parseInt(this.props.options);
 
-        for (let i = 1; i < optionNum; i+= 2){
-            let option1 = makeInput(i)
-            let option2 = makeInput(i +1)
-            let finalDiv =  <div className="bracket-options">
+        function makeInput(optionNumber, props) {
+            return (
+                <input
+                    type="text"
+                    placeholder={'Option ' + optionNumber}
+                    name={'option-' + optionNumber}
+                    value={props.list}
+                    onChange={props.handleChange}
+                />
+            );
+        }
+        //split on the dash in name,
+        //take the value and handleChange, just change the value of list of
+        const matchups = [];
+
+        for (let i = 1; i < optionNum; i += 2) {
+            let option1 = makeInput(i, this.props);
+            let option2 = makeInput(i + 1, this.props);
+            let finalDiv = (
+                <div className="bracket-options">
                     {option1}
                     <br></br>
                     VS
                     <br></br>
                     {option2}
                 </div>
-            
-            matchups.push(finalDiv)
+            );
+            matchups.push(finalDiv);
         }
 
-        
-
-      return(
-        <div className="brackets">
-            {matchups}
-        </div>
-      )
+        return (
+            <div className="brackets">
+                {matchups}
+                <a class="waves-effect waves-light btn pink" onClick={this.props.handleSubmit} href="">
+                    Submit
+                </a>
+            </div>
+        );
     }
-  }
+}
