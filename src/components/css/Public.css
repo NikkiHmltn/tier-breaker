@@ -16,7 +16,7 @@
 }
 
 .bracket-card a {
-    color: #ee6e73;
+    color: white;
 }
 
 .bracket-card h3 {
@@ -32,6 +32,88 @@
     background-color: #ee6e7293;
 }
 
-.bracket-card:hover a {
+.Filter-bubble {
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    background-color: #ee6e73;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    border-radius: 50%;
+    filter: drop-shadow(4px 3px 9px #919191);
+}
+
+.Filter-bubble i.material-icons {
+    height: 30px;
+    margin: 4px 0px 0px 1px;
+    color: whitesmoke;
+}
+
+.Filter-popup {
+    position: fixed;
+    bottom: 120px;
+    right: 50px;
+    height: 200px;
+    width: 150px;
+    border-radius: 15px;
+    background-color: whitesmoke;
+    filter: drop-shadow(4px 3px 9px #919191);
+    overflow-y: scroll;
+}
+
+.Filter-popup p {
+    color: #ee6e73;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+
+.Filter-popup p:hover {
     color: white;
+    background-color: #ee6e7293;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .shown {
+        animation: Grow 0.5s linear forwards;
+    }
+    .hidden {
+        animation: unGrow 0.5s linear forwards;
+    }
+}
+
+@media (min-width: 1700px) {
+    .public-brackets {
+        display: grid;
+        gap: 3rem;
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@keyframes Grow {
+    from {
+        height: 0;
+        width: 0;
+    }
+    to {
+        height: 200px;
+        width: 150px;
+    }
+}
+
+@keyframes unGrow {
+    to {
+        height: 0;
+        width: 0;
+        opacity: 0;
+    }
+    from {
+        height: 200px;
+        width: 150px;
+        opacity: 1;
+    }
 }
