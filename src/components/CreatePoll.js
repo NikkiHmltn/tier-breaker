@@ -31,7 +31,7 @@ export default class CreatePoll extends Component {
     }
     _next() {
       let currentStep = this.state.currentStep
-      currentStep = currentStep >= 2? 3: currentStep + 1
+      currentStep = currentStep >= 2? 2: currentStep + 1
       this.setState({
         currentStep: currentStep
       })
@@ -50,13 +50,15 @@ export default class CreatePoll extends Component {
       if (name === 'private' && value === "on") {
         this.setState({private: true})
       }
-
-      if (name.includes('option')){
-        let index = name.split('-')[1]
+      
+      if (name.includes('option-')){
+        let index = parseInt(name.split('-')[1])
         let list = this.state.list.slice(0, this.state.list.length)
-        if (list.length === index) {
+        console.log(index)
+        console.log(list)
+        console.log(this.state.list)
+        if (list.length == index) {
           list[index-1] = value
-
         } else {
           list.push(value)
         }
@@ -85,12 +87,13 @@ export default class CreatePoll extends Component {
       axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
       .then((newBracket) => {
         console.log(newBracket.data)
+        console.log(this.state.redirect, "REDIRECTING...")
         this.setState({redirect: true})
+        
       })
     }
 
   componentDidUpdate() {
-    console.log("IN UPDATE")
     M.AutoInit(); 
   }
 
@@ -98,7 +101,7 @@ get previousButton(){
   let currentStep = this.state.currentStep;
   if(currentStep !==1){
     return (
-      <a href="." className="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
+      <a className="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
     )
   }
   return null;
@@ -108,14 +111,14 @@ get nextButton(){
   let currentStep = this.state.currentStep;
   if(currentStep <2){
     return (
-      <a href="." className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
+      <a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
     )
   }
   return null;
 }
     render() {  
       M.AutoInit(); 
-      if (this.state.redirect) {
+      if (this.state.redirect === true) {
         return <Redirect to='/finishedcreate' />
       }
       return (

@@ -9,7 +9,7 @@ export default class Step2 extends Component {
     } 
 
     render() {
-      if (this.props.currentStep !== 2) { // Prop: The current step
+      if (this.props.currentStep !== 2) { 
         return null
       }
      
@@ -18,8 +18,6 @@ export default class Step2 extends Component {
       function makeInput(optionNumber, props) {
         return <input type="text" placeholder={"Option " + optionNumber} name={"option-" + optionNumber} value={props.list} onChange={props.handleChange}/>
     }
-      //split on the dash in name, 
-      //take the value and handleChange, just change the value of list of 
       const matchups = []
 
       for (let i = 1; i < optionNum; i+= 2){

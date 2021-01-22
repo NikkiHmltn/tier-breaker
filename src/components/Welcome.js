@@ -12,7 +12,7 @@ function Welcome() {
           <h3>Instructions</h3>
           <div className="words-box">
             <p>Create tournament brackets with your group or some friends. Easy and timed to determine the winners by your votes!</p>
-            <p className="instructions">
+            <p>
               <div className="step-one">
                 <img src="https://img.icons8.com/carbon-copy/100/000000/1-circle.png"/> 
                 <span>Create a tournament bracket with a title, your options that go in each cell of the bracket, how long you want it to be open to votes for, and how you want your winner displayed. </span>
