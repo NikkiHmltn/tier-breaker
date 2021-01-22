@@ -1,0 +1,37 @@
+.public-brackets {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+}
+
+.bracket-card {
+    border: rgb(0, 0, 0) 1px solid;
+    border-radius: 15px;
+    margin: 10px;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+.bracket-card a {
+    color: #ee6e73;
+}
+
+.bracket-card h3 {
+    margin: 0;
+}
+
+.bracket-card p {
+    margin: 0;
+    align-self: flex-start;
+}
+
+.bracket-card:hover {
+    background-color: #ee6e7293;
+}
+
+.bracket-card:hover a {
+    color: white;
+}
