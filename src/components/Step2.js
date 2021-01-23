@@ -12,20 +12,18 @@ export default class Step2 extends Component {
 
         let optionNum = parseInt(this.props.options);
 
-        function makeInput(optionNumber, props) {
-            return (
-                <input
-                    type="text"
-                    placeholder={'Option ' + optionNumber}
-                    name={'option-' + optionNumber}
-                    value={props.list}
-                    onChange={props.handleChange}
-                />
-            );
-        }
-        //split on the dash in name,
-        //take the value and handleChange, just change the value of list of
-        const matchups = [];
+
+    render() {
+      if (this.props.currentStep !== 2) { 
+        return null
+      }
+     
+      let optionNum = parseInt(this.props.options)
+      
+      function makeInput(optionNumber, props) {
+        return <input type="text" placeholder={"Option " + optionNumber} name={"option-" + optionNumber} value={props.list} onChange={props.handleChange}/>
+    }
+      const matchups = []
 
         for (let i = 1; i < optionNum; i += 2) {
             let option1 = makeInput(i, this.props);

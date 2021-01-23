@@ -28,11 +28,12 @@ export default class CreatePoll extends Component {
         M.AutoInit();
     }
     _next() {
-        let currentStep = this.state.currentStep;
-        currentStep = currentStep >= 2 ? 3 : currentStep + 1;
-        this.setState({
-            currentStep: currentStep
-        });
+      let currentStep = this.state.currentStep
+      currentStep = currentStep >= 2? 2: currentStep + 1
+      this.setState({
+        currentStep: currentStep
+      })
+
     }
 
     _prev() {
@@ -44,21 +45,22 @@ export default class CreatePoll extends Component {
     }
 
     handleChange(event) {
-        const { name, value } = event.target;
-        if (name === 'private' && value === 'on') {
-            this.setState({ private: true });
-        }
-        console.log(this.state.list);
+      const {name, value} = event.target
+      if (name === 'private' && value === "on") {
+        this.setState({private: true})
+      }
+      
+      if (name.includes('option-')){
+        let index = parseInt(name.split('-')[1])
+        let list = this.state.list.slice(0, this.state.list.length)
+        console.log(index)
+        console.log(list)
+        console.log(this.state.list)
+        if (list.length == index) {
+          list[index-1] = value
+        } else {
+          list.push(value)
 
-        if (name.includes('option-')) {
-            let index = parseInt(name.split('-')[1]);
-            let list = this.state.list.slice(0, this.state.list.length);
-            if (list.length === index) {
-                list[index - 1] = value;
-            } else {
-                list.push(value);
-            }
-            this.setState({ list });
         }
 
         this.setState({
@@ -68,78 +70,78 @@ export default class CreatePoll extends Component {
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
-        event.preventDefault();
-        let num_options = this.state.list.length;
-        const newBracket = {
-            duration: this.state.duration,
-            title: this.state.title,
-            end_display: this.state.display,
-            private: this.state.private,
-            options_list: this.state.list,
-            num_options: num_options
-        };
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket).then((newBracket) => {
-            console.log(newBracket.data);
-            this.setState({ redirect: true });
-        });
-    };
-
-    componentDidUpdate() {
-        console.log('IN UPDATE');
-        M.AutoInit();
+      
+      event.preventDefault()
+      let num_options = this.state.list.length
+      const newBracket = {
+        duration: this.state.duration,
+        title: this.state.title,
+        end_display: this.state.display,
+        private: this.state.private,
+        options_list: this.state.list,
+        num_options: num_options, 
+      }
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
+      .then((newBracket) => {
+        console.log(newBracket.data)
+        console.log(this.state.redirect, "REDIRECTING...")
+        this.setState({redirect: true})
+        
+      })
     }
 
-    get previousButton() {
-        let currentStep = this.state.currentStep;
-        if (currentStep !== 1) {
-            return (
-                <a className="waves-effect waves-light btn pink" onClick={this._prev}>
-                    Previous
-                </a>
-            );
-        }
-        return null;
-    }
+  componentDidUpdate() {
+    M.AutoInit(); 
+  }
 
-    get nextButton() {
-        let currentStep = this.state.currentStep;
-        if (currentStep < 2) {
-            return (
-                <a className="waves-effect waves-light btn pink" onClick={this._next}>
-                    Next
-                </a>
-            );
-        }
-        return null;
-    }
-    render() {
-        M.AutoInit();
-        if (this.state.redirect) {
-            return <Redirect to="/finishedcreate" />;
-        }
-        return (
-            <React.Fragment>
-                <h1>Create a Bracket</h1>
-
-                <form onSubmit={this.handleSubmit}>
-                    <Step1
-                        currentStep={this.state.currentStep}
-                        handleChange={this.handleChange}
-                        duration={this.state.duration}
-                        options={this.state.options}
-                        title={this.state.title}
-                        display={this.state.display}
-                    />
-                    <Step2
-                        currentStep={this.state.currentStep}
-                        handleChange={this.handleChange}
-                        options={this.state.options}
-                        handleSubmit={this.handleSubmit}
-                    />
-                    {this.previousButton}
-                    {this.nextButton}
-                </form>
-            </React.Fragment>
-        );
-    }
+get previousButton(){
+  let currentStep = this.state.currentStep;
+  if(currentStep !==1){
+    return (
+      <a className="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
+    )
+  }
+  return null;
 }
+
+get nextButton(){
+  let currentStep = this.state.currentStep;
+  if(currentStep <2){
+    return (
+      <a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
+    )
+  }
+  return null;
+}
+    render() {  
+      M.AutoInit(); 
+      if (this.state.redirect === true) {
+        return <Redirect to='/finishedcreate' />
+      }
+      return (
+        <React.Fragment>
+        <h1>Create a Bracket</h1>
+          
+        <form onSubmit={this.handleSubmit}>
+          <Step1 
+            currentStep={this.state.currentStep} 
+            handleChange={this.handleChange}
+            duration={this.state.duration}
+            options={this.state.options}
+            title={this.state.title} 
+            display={this.state.display}
+          />
+          <Step2 
+            currentStep={this.state.currentStep} 
+            handleChange={this.handleChange}
+            options={this.state.options}
+            handleSubmit={this.handleSubmit}
+          />
+          {this.previousButton}
+          {this.nextButton}
+        </form>
+        </React.Fragment>
+      )
+      }
+  }
+
