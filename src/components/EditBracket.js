@@ -86,7 +86,7 @@ export default class EditBracket extends Component {
             value={this.state.title}
             onChange={this.handleChange} 
           />
-        <h4>Current Time: {this.state.time_duration} day(s)</h4>  
+        <h4>Current Time: {this.state.time_duration} </h4>  
         <div className="input-field">
           <select name="duration" id="duration"onChange={this.handleChange}>
             <option>Select One</option>
@@ -98,7 +98,7 @@ export default class EditBracket extends Component {
             <option value="6">6 days</option>
             <option value="7">7 days</option>
           </select>
-          <label htmlFor="duration">Voting Duration</label>
+          <label htmlFor="duration">How long do you want your poll to stay open for?</label>
         </div>
          
       </div>

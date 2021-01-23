@@ -50,7 +50,7 @@ export default class Step1 extends Component {
             <option value="6">6 days</option>
             <option value="7">7 days</option>
           </select>
-          <label htmlFor="duration">Voting Duration</label>
+          <label htmlFor="duration">How long do you want the poll open for?</label>
         </div>
           <div className="input-field">
           <select name="display" id="display" onChange={this.props.handleChange}>
