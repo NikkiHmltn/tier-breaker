@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
-import './Welcome.css'
+import { Link } from 'react-router-dom';
+import './css/Welcome.css';
 
 function Welcome() {
     return (
@@ -44,9 +44,9 @@ function Welcome() {
           <Link to="/entercode">
             <button type="button">Enter Code</button>
           </Link>
+
         </div>
-      </div>
     );
-  }
-  
-  export default Welcome;
+}
+
+export default Welcome;

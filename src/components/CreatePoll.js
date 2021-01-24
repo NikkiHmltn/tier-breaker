@@ -1,33 +1,31 @@
-import React, {Component} from 'react'
-import Step1 from './Step1'
-import Step2 from './Step2'
-import M from "materialize-css"
-import axios from 'axios'
-import {Redirect} from 'react-router-dom'
-
+import React, { Component } from 'react';
+import Step1 from './Step1';
+import Step2 from './Step2';
+import M from 'materialize-css';
+import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 export default class CreatePoll extends Component {
-
     constructor(props) {
-      super(props)
-      // Set the initial input values
-      this.state = {
-        currentStep: 1, // Default is Step 1
-        duration: '',
-        options: '',
-        title: '', 
-        display: '',
-        private: false,
-        list: [],
-        redirect: false,
-      }
-    
-      this.handleChange = this.handleChange.bind(this)
-      this._next = this._next.bind(this)
-      this._prev = this._prev.bind(this)
+        super(props);
+        // Set the initial input values
+        this.state = {
+            currentStep: 1, // Default is Step 1
+            duration: '',
+            options: '',
+            title: '',
+            display: '',
+            private: false,
+            list: [],
+            redirect: false
+        };
+
+        this.handleChange = this.handleChange.bind(this);
+        this._next = this._next.bind(this);
+        this._prev = this._prev.bind(this);
     }
     componentDidMount() {
-      M.AutoInit(); 
+        M.AutoInit();
     }
     _next() {
       let currentStep = this.state.currentStep
@@ -35,14 +33,15 @@ export default class CreatePoll extends Component {
       this.setState({
         currentStep: currentStep
       })
+
     }
 
     _prev() {
-      let currentStep = this.state.currentStep
-      currentStep = currentStep <= 1? 1: currentStep - 1
-      this.setState({
-        currentStep: currentStep
-      })
+        let currentStep = this.state.currentStep;
+        currentStep = currentStep <= 1 ? 1 : currentStep - 1;
+        this.setState({
+            currentStep: currentStep
+        });
     }
 
     handleChange(event) {
@@ -61,15 +60,13 @@ export default class CreatePoll extends Component {
           list[index-1] = value
         } else {
           list.push(value)
+
         }
-        this.setState({list})
-      }
 
-      this.setState({
-        [name]: value
-      })    
+        this.setState({
+            [name]: value
+        });
     }
-
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
@@ -147,3 +144,4 @@ get nextButton(){
       )
       }
   }
+
