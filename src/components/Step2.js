@@ -2,22 +2,12 @@ import React, { Component } from 'react';
 import './css/Step2.css';
 
 export default class Step2 extends Component {
-    componentDidMount() {}
-
+    
     render() {
-        if (this.props.currentStep !== 2) {
+      if (this.props.currentStep !== 2) {
             // Prop: The current step
             return null;
         }
-
-        let optionNum = parseInt(this.props.options);
-
-
-    render() {
-      if (this.props.currentStep !== 2) { 
-        return null
-      }
-     
       let optionNum = parseInt(this.props.options)
       
       function makeInput(optionNumber, props) {
