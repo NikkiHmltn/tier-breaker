@@ -46,6 +46,7 @@ function Welcome() {
           </Link>
 
         </div>
+        </div>
     );
 }
 

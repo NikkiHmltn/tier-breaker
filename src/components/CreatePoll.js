@@ -20,13 +20,15 @@ export default class CreatePoll extends Component {
             redirect: false
         };
 
-        this.handleChange = this.handleChange.bind(this);
-        this._next = this._next.bind(this);
-        this._prev = this._prev.bind(this);
+      this.handleChange = this.handleChange.bind(this);
+      this._next = this._next.bind(this);
+      this._prev = this._prev.bind(this);
     }
+
     componentDidMount() {
-        M.AutoInit();
+      M.AutoInit();
     }
+
     _next() {
       let currentStep = this.state.currentStep
       currentStep = currentStep >= 2? 2: currentStep + 1
@@ -45,28 +47,31 @@ export default class CreatePoll extends Component {
     }
 
     handleChange(event) {
+      
       const {name, value} = event.target
       if (name === 'private' && value === "on") {
         this.setState({private: true})
       }
-      
+      console.log(name, value)
       if (name.includes('option-')){
         let index = parseInt(name.split('-')[1])
         let list = this.state.list.slice(0, this.state.list.length)
         console.log(index)
         console.log(list)
         console.log(this.state.list)
+        
+
         if (list.length == index) {
           list[index-1] = value
         } else {
           list.push(value)
-
         }
-
+      }
         this.setState({
             [name]: value
         });
     }
+  
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
@@ -90,29 +95,29 @@ export default class CreatePoll extends Component {
       })
     }
 
-  componentDidUpdate() {
+  componentDidUpdate(){
     M.AutoInit(); 
   }
 
-get previousButton(){
-  let currentStep = this.state.currentStep;
-  if(currentStep !==1){
-    return (
-      <a className="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
-    )
+  get previousButton(){
+    let currentStep = this.state.currentStep;
+    if(currentStep !==1){
+      return (
+        <a className="waves-effect waves-light btn pink" onClick={this._prev}>Previous</a>
+      )
+    }
+    return null;
   }
-  return null;
-}
 
-get nextButton(){
-  let currentStep = this.state.currentStep;
-  if(currentStep <2){
-    return (
-      <a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
-    )
+  get nextButton(){
+    let currentStep = this.state.currentStep;
+    if(currentStep <2){
+      return (
+        <a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
+      )
+    }
+    return null;
   }
-  return null;
-}
     render() {  
       M.AutoInit(); 
       if (this.state.redirect === true) {
