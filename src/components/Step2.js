@@ -54,7 +54,7 @@ export default class Step2 extends Component {
         return (
             <div className="brackets">
                 {matchups}
-                <a class="waves-effect waves-light btn pink" onClick={this.props.handleSubmit} href="">
+                <a className="waves-effect waves-light btn pink" onClick={this.props.handleSubmit} href="">
                     Submit
                 </a>
             </div>

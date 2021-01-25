@@ -55,3 +55,7 @@
     justify-self:space-evenly;
     width: 31px;
 }
+
+.dev-p p{
+    display: inline;
+}

@@ -9,13 +9,21 @@ class Public extends Component {
         super(props);
         this.state = {
             publicBrackets: [],
-            month: ''
+            month: '',
+            error: false,
+            loading: false
         };
     }
 
     componentDidMount() {
+        this.setState({loading: true})
         axios.get(`${process.env.REACT_APP_SERVER_URL}/brackets`).then((response) => {
-            this.setState({ publicBrackets: response.data.public_brackets });
+            if (response.data.msg.includes('public_brackets')) {
+                this.setState({ publicBrackets: response.data.public_brackets, loading: false });
+            } else {
+                this.setState({loading: false, error: true})
+            }
+            
         });
     }
 
@@ -49,7 +57,12 @@ class Public extends Component {
                 </Link>
             );
         });
-
+        if (this.state.error) {
+            return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
+        }
+        if (this.state.loading) {
+            return <div>LOADING....</div>
+        }
         return (
             <>
                 <h1>Public Tournaments</h1>

@@ -10,11 +10,11 @@ export default class Vote extends Component {
       socket: null,
       key: '',
       voting: [{}],
-      loading: true
+      loading: true, 
+      error: false
     }
   }
 
-  
 
   componentDidMount() {
     console.log('in mount')
@@ -36,6 +36,7 @@ export default class Vote extends Component {
     //DONT FORGET
     .then((res) => {
       console.log(res)
+      
       this.setState({key: res.data.key, voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1], loading: false})
     })
     socket.on('vote_cast', (data) => {

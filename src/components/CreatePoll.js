@@ -87,17 +87,14 @@ export default class CreatePoll extends Component {
       if (name.includes('option-')){
         let index = parseInt(name.split('-')[1])
         let list = this.state.list.slice(0, this.state.list.length)
-        console.log(index)
-        console.log(list)
-        console.log(this.state.list)
-        
-
+      
         if (list.length == index) {
           list[index-1] = value
         } else {
           list.push(value)
 >>>>>>> b23e67ea3d192e16d54cb5181501a8891b3904f9
         }
+        this.setState({list: list})
       }
         this.setState({
             [name]: value
@@ -107,6 +104,7 @@ export default class CreatePoll extends Component {
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
+<<<<<<< HEAD
         event.preventDefault();
         let num_options = this.state.list.length;
         const newBracket = {
@@ -147,6 +145,32 @@ export default class CreatePoll extends Component {
             );
         }
         return null;
+=======
+      
+
+
+      event.preventDefault()
+      let num_options = this.state.list.length
+      const newBracket = {
+        duration: this.state.duration,
+        title: this.state.title,
+        end_display: this.state.display,
+        private: this.state.private,
+        options_list: this.state.list,
+        num_options: num_options, 
+      }
+      axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
+      .then((newBracket) => {
+        console.log(newBracket.data)
+        if (!newBracket.data.msg.includes('created')) {
+          this.setState({error: true, loading: false})
+        } else {
+          this.setState({redirect: true, loading: false})
+        }
+        
+        
+      })
+>>>>>>> ec338c938d2476e3bcd5bc580b562771ff57d31f
     }
 
     render() {
@@ -198,7 +222,7 @@ export default class CreatePoll extends Component {
     let currentStep = this.state.currentStep;
     if(currentStep <2){
       return (
-        <a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
+        <div><a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a></div>    
       )
     }
     return null;
@@ -207,6 +231,9 @@ export default class CreatePoll extends Component {
       M.AutoInit(); 
       if (this.state.redirect === true) {
         return <Redirect to='/finishedcreate' />
+      }
+      if (this.state.error) {
+        return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
       }
       return (
         <React.Fragment>
