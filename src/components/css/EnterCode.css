@@ -1,0 +1,9 @@
+.six-box {
+    width: 400px;
+    border: hotpinksolid solid 1px;
+    display: inline-flex;
+}
+
+.six-box p {
+    
+}

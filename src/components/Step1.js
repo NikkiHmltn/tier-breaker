@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
+import './css/Step2.css';
 
 export default class Step1 extends Component {
     constructor(props) {
@@ -19,8 +20,8 @@ export default class Step1 extends Component {
         }
 
         return (
-            <div>
-                <label htmlFor="title">Title/Question</label>
+            <div className="Forms">
+                <label  htmlFor="title">Title/Question</label>
                 <input
                     className="input-field"
                     id="title"
@@ -73,7 +74,7 @@ export default class Step1 extends Component {
                 <div className="switch">
                     <label>
                         Public
-                        <input type="checkbox" name="private" onChange={this.props.handleChange} />
+                        <input className="pp" type="checkbox" name="private" onChange={this.props.handleChange} />
                         <span style={{ backgroundColor: 'pink' }} className="lever"></span>
                         Private
                     </label>
