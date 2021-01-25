@@ -15,31 +15,8 @@ export default class EditBracket extends Component {
         };
     }
 
-<<<<<<< HEAD
     componentDidMount() {
         M.AutoInit();
-=======
-  componentDidMount() {
-    M.AutoInit(); 
-   
-    this.setState({loading: true})
-    // DONT FORGET TO CHANGE THE BRACKET ID TO WHATEVER RUBEN HAS IT SET TO 
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/d10365ec`)
-    //SERIOUSLY DONT FORGET 
-    .then((bracket) => {
-      console.log(bracket)
-      let startBracket = bracket.data
-      this.setState({
-        key: startBracket.key, 
-        private: startBracket.private,
-        title: startBracket.title,
-        redirect: false, 
-        loading: false,
-        error: false
-      })
-    })
-  }
->>>>>>> ec338c938d2476e3bcd5bc580b562771ff57d31f
 
         this.setState({ loading: true });
         // DONT FORGET TO CHANGE THE BRACKET ID TO WHATEVER RUBEN HAS IT SET TO
@@ -54,84 +31,26 @@ export default class EditBracket extends Component {
                     private: startBracket.private,
                     title: startBracket.title,
                     redirect: false,
-                    loading: false
+                    loading: false,
+                    error: false
                 });
             });
     }
 
-<<<<<<< HEAD
     handleChange = (event) => {
         const { name, value } = event.target;
-=======
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.setState({loading: true})
-      const newBracket = {
-        title: this.state.title,
-        private: this.state.private,
-      }
-      axios.put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
-      .then((newBracket) => {
-        if (newBracket.data.msg.includes("updated")) {
-          this.setState({redirect: true, loading: false})
-        } else {
-          this.setState({loading: false, error: true})
-        }
-        
-      })
-  }
->>>>>>> ec338c938d2476e3bcd5bc580b562771ff57d31f
 
         this.setState({
             [name]: value
         });
     };
 
-<<<<<<< HEAD
     handlePrivate = (event) => {
         const { name, value } = event.target;
         if (name === 'private' && value === 'on') {
             this.setState({ private: true });
         } else if (name === 'public' && value === 'on') {
             this.setState({ private: false });
-=======
-  render(){
-    if (this.state.redirect) {
-      return <Redirect to='/' />
-    }
-    if (this.state.loading) {
-      <div>
-        LOADING....
-      </div>
-    }
-    if (this.state.error) {
-      return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
-    }
-    return (
-      <div className="EditBracket">
-        <h2>{this.state.key}</h2>
-        <form onSubmit={this.handleSubmit}>
-          {this.state.private == true ? (
-          <div>
-          <h4>Currently: Private</h4>
-          <p>
-            <label htmlFor="public">
-              <input type="checkbox" name="public" onChange={this.handlePrivate} />
-              <span>Make Public</span>
-            </label>
-          </p>
-          </div>
-        ):
-          <div>
-          <h4>Currently: Public</h4>
-          <p>
-          <label>
-            <input htmlFor="private" type="checkbox" name="private" onChange={this.handlePrivate} />
-            <span>Make Private</span>
-          </label>
-        </p>
-        </div>
->>>>>>> ec338c938d2476e3bcd5bc580b562771ff57d31f
         }
     };
 
@@ -145,7 +64,11 @@ export default class EditBracket extends Component {
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
             .then((newBracket) => {
-                this.setState({ redirect: true, loading: false });
+                if (newBracket.data.msg.includes('updated')) {
+                    this.setState({ redirect: true, loading: false });
+                } else {
+                    this.setState({ loading: false, error: true });
+                }
             });
     };
 
@@ -167,11 +90,14 @@ export default class EditBracket extends Component {
         if (this.state.loading) {
             <div>LOADING....</div>;
         }
+        if (this.state.error) {
+            return <div style={{ color: 'red' }}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>;
+        }
         return (
             <div className="EditBracket">
                 <h2>{this.state.key}</h2>
                 <form onSubmit={this.handleSubmit}>
-                    {this.state.private == true ? (
+                    {this.state.private === true ? (
                         <div>
                             <h4>Currently: Private</h4>
                             <p>
