@@ -17,7 +17,7 @@ To access the live site, visit [tierbreaker.herokuapp.com](https://tierbreaker.h
 
 # Site Flow
 
-Our landing page offers instructions for site use and directs the visitor to either create or vote by entering a code.  To view any public polls, `Vote Public` will direct you to a view page for polls by date
+Our landing page offers instructions for site use and directs the visitor to either create or vote by entering a code.  To view any public polls, `Vote Public` will direct you to a view page for polls by date.
 
 ![welcome page]()
 
