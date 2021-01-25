@@ -1,17 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
-
 .App {
   text-align: center;
-  font-family: 'Dosis', sans-serif;
-}
-
-p {
-  font-size: 1.15rem;
-}
-
-h1, h2, h3 {
-  font-family: 'Fredericka the Great', cursive;;
 }
 
 
