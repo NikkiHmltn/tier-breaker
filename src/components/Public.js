@@ -43,7 +43,7 @@ class Public extends Component {
         if (this.state.month) {
             monthBrackets = monthBrackets.filter((bracket) => {
                 let month = new Date(bracket.created_at.$date).toString().split(' ')[1];
-                return month.slice(0, 3) === this.state.month;
+                return month === this.state.month.slice(0, 3);
             });
         }
 
