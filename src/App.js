@@ -30,7 +30,7 @@ function App() {
                         return <Bracket history={history} location={location} />;
                     }}
                 />
-                <Route exact path="/editbracket" component={EditBracket} />
+                <Route exact path="/editbracket/:key" component={EditBracket} />
                 <Route exact path="/votesubmitted" component={VoteSubmitted} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/public" component={Public} />
