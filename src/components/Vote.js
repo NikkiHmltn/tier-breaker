@@ -14,7 +14,6 @@ export default class Vote extends Component {
     }
   }
 
-  
 
   componentDidMount() {
     console.log('in mount')

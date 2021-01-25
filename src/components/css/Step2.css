@@ -10,3 +10,13 @@
     margin: 0 auto;
     padding: 10px;
 }
+
+.Forms {
+    width: 500px;
+    text-align: left;
+    display: inline-block;
+}
+
+.pp {
+   justify-content: center;
+}
