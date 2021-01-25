@@ -113,7 +113,7 @@ export default class CreatePoll extends Component {
     let currentStep = this.state.currentStep;
     if(currentStep <2){
       return (
-        <a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a>      
+        <div><a className="waves-effect waves-light btn pink" onClick={this._next}>Next</a></div>    
       )
     }
     return null;

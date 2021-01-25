@@ -1,0 +1,12 @@
+.message {
+    background-color: rgb(202, 202, 202);
+    border-radius: 10px;
+    display: inline-flex;
+    width: 900px;
+    padding: 20px;
+    filter: drop-shadow(5px 4px 4px #cccccc);
+}
+
+img:hover {
+    opacity: .9;
+}

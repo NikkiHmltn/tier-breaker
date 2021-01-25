@@ -1,23 +1,36 @@
 .instruction-box {
     display: inline-block;
-    border: rgb(0, 0, 0) 1px solid;
+    background-color: rgb(211, 211, 211);
+    filter: drop-shadow(5px 4px 4px #cccccc);
     border-radius: 15px;
     width: 800px;
-    height: 350px;
+    height: 500px;
+    margin-bottom: 20px;
   }
 
-  .words-box {
-    display: inline-block;
-    border: rgb(0, 0, 0) 1px solid;
-    border-radius: 15px;
-    width: 400px;
-    height: 200px;
-    margin: 25px;
-  }
-  
-  .six-box{
-    font-size:xx-large;
-    text-align: center;
-    width: 300px;
-    height: 75px;
-  }
+a {
+  margin: 10px;
+}
+
+p {
+  margin-top: -10px;
+  width: 500px;
+  display: inline-flex;
+}
+
+.media {
+  display: flex;
+  align-items: flex-start;
+  padding: 0px 50px 0px 50px;
+}
+.media .content {
+  flex: 1;
+  padding: 10px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+}
+
+.media span {
+  text-align:left;
+}
