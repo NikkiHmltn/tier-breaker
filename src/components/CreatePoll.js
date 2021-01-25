@@ -28,8 +28,6 @@ export default class CreatePoll extends Component {
     componentDidMount() {
       M.AutoInit();
     }
-<<<<<<< HEAD
-=======
 
     _next() {
       let currentStep = this.state.currentStep
@@ -37,7 +35,6 @@ export default class CreatePoll extends Component {
       this.setState({
         currentStep: currentStep
       })
->>>>>>> b23e67ea3d192e16d54cb5181501a8891b3904f9
 
     componentDidUpdate() {
         M.AutoInit();
@@ -59,7 +56,6 @@ export default class CreatePoll extends Component {
     }
 
     handleChange(event) {
-<<<<<<< HEAD
         const { name, value } = event.target;
         if (name === 'private' && value === 'on') {
             this.setState({ private: true });
@@ -77,22 +73,6 @@ export default class CreatePoll extends Component {
                 list.push(value);
             }
             this.setState({ list });
-=======
-      
-      const {name, value} = event.target
-      if (name === 'private' && value === "on") {
-        this.setState({private: true})
-      }
-      console.log(name, value)
-      if (name.includes('option-')){
-        let index = parseInt(name.split('-')[1])
-        let list = this.state.list.slice(0, this.state.list.length)
-      
-        if (list.length == index) {
-          list[index-1] = value
-        } else {
-          list.push(value)
->>>>>>> b23e67ea3d192e16d54cb5181501a8891b3904f9
         }
         this.setState({list: list})
       }
