@@ -29,6 +29,10 @@ export default class CreatePoll extends Component {
         M.AutoInit();
     }
 
+    componentDidUpdate() {
+        M.AutoInit();
+    }
+
     _next() {
         let currentStep = this.state.currentStep;
         currentStep = currentStep >= 2 ? 2 : currentStep + 1;
@@ -86,10 +90,6 @@ export default class CreatePoll extends Component {
             }
         });
     };
-
-    componentDidUpdate() {
-        M.AutoInit();
-    }
 
     get previousButton() {
         let currentStep = this.state.currentStep;

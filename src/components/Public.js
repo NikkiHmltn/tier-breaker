@@ -16,15 +16,13 @@ class Public extends Component {
     }
 
     componentDidMount() {
-        this.setState({loading: true})
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/brackets`).then((response) => {
-            if (response.data.msg.includes('public_brackets')) {
+        this.setState({ loading: true });
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/brackets`)
+            .then((response) => {
                 this.setState({ publicBrackets: response.data.public_brackets, loading: false });
-            } else {
-                this.setState({loading: false, error: true})
-            }
-            
-        });
+            })
+            .catch((err) => this.setState({ loading: false, error: true }));
     }
 
     filter = (month) => {
@@ -46,22 +44,24 @@ class Public extends Component {
 
         const brackets = monthBrackets.map((bracket) => {
             return (
-                <Link key={bracket.key} className="bracket-card" to={`/bracket/${bracket.key}`}>
-                    <p>{new Date(bracket.created_at.$date).toString().split(' ').slice(1, 4).join(' ')}</p>
+                <Link key={bracket.key} className="bracket-card" to={{ pathname: '/bracket', state: bracket.key }}>
+                    <p className="date">
+                        {new Date(bracket.created_at.$date).toString().split(' ').slice(1, 4).join(' ')}
+                    </p>
                     <h3>{bracket.title}</h3>
                     {bracket.end_display ? (
-                        <Link to={`/bracket/${bracket.key}`}>View Results!</Link>
+                        <p className="vote-view">View Results!</p>
                     ) : (
-                        <Link to={`/bracket/${bracket.key}`}>Vote!</Link>
+                        <p className="vote-view">Vote!</p>
                     )}
                 </Link>
             );
         });
         if (this.state.error) {
-            return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
+            return <div style={{ color: 'red' }}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>;
         }
         if (this.state.loading) {
-            return <div>LOADING....</div>
+            return <div>LOADING....</div>;
         }
         return (
             <>
