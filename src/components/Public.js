@@ -17,17 +17,19 @@ class Public extends Component {
     }
 
     componentDidMount() {
-        this.setState({loading: true})
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/brackets`).then((response) => {
-            if (response.data.public_brackets) {
-                this.setState({ publicBrackets: response.data.public_brackets, loading: false });
-            } else {
-                this.setState({loading: false, error: true})
-            }
-        })
-        .catch((err) => {
-            this.setState({redirect: true})
-        })
+        this.setState({ loading: true });
+        axios
+            .get(`${process.env.REACT_APP_SERVER_URL}/brackets`)
+            .then((response) => {
+                if (response.data.public_brackets) {
+                    this.setState({ publicBrackets: response.data.public_brackets, loading: false });
+                } else {
+                    this.setState({ loading: false, error: true });
+                }
+            })
+            .catch((err) => {
+                this.setState({ redirect: true });
+            });
     }
 
     filter = (month) => {
@@ -69,7 +71,7 @@ class Public extends Component {
             return <div>LOADING....</div>;
         }
         if (this.state.redirect) {
-            <Redirect to="/404" />
+            <Redirect to="/404" />;
         }
         return (
             <>

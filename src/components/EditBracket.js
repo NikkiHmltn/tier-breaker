@@ -5,6 +5,7 @@ import axios from 'axios';
 import M from 'materialize-css';
 
 export default class EditBracket extends Component {
+
   constructor() {
     super();
     this.state = {
@@ -45,7 +46,6 @@ export default class EditBracket extends Component {
     handleChange = (event) => {
         const { name, value } = event.target;
 
-
         this.setState({
             [name]: value
         });
@@ -58,9 +58,9 @@ export default class EditBracket extends Component {
         } else if (name === 'public' && value === 'on') {
             this.setState({ private: false });
         }
-    }
-    
-       handleSubmit = (event) => {
+    };
+
+    handleSubmit = (event) => {
         event.preventDefault();
         this.setState({ loading: true });
         const newBracket = {
@@ -76,24 +76,26 @@ export default class EditBracket extends Component {
                 } else {
                     this.setState({ loading: false, error: true });
                 }
-            }).catch((err)=> {
-                this.setState({error: true})
-              });
+            })
+            .catch((err) => {
+                this.setState({ error: true });
+            });
     };
 
     handleDelete = (event) => {
-    axios.delete(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/delete`)
-    .then((res)=> {
-      if (typeof res.data.msg === 'string' && res.data.msg.includes('deleted')) {
-        this.setState({ error: false, loading: false, redirect: true});
-      } else {
-        this.setState({ loading: false, error: true });
-      }
-    })
-    .catch((err) => {
-      this.setState({error: true})
-    })
-  }
+        axios
+            .delete(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/delete`)
+            .then((res) => {
+                if (typeof res.data.msg === 'string' && res.data.msg.includes('deleted')) {
+                    this.setState({ error: false, loading: false, redirect: true });
+                } else {
+                    this.setState({ loading: false, error: true });
+                }
+            })
+            .catch((err) => {
+                this.setState({ error: true });
+            });
+    };
 
   render(){
     
