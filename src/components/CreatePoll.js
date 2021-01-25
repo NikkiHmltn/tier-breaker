@@ -56,11 +56,7 @@ export default class CreatePoll extends Component {
       if (name.includes('option-')){
         let index = parseInt(name.split('-')[1])
         let list = this.state.list.slice(0, this.state.list.length)
-        console.log(index)
-        console.log(list)
-        console.log(this.state.list)
-        
-
+      
         if (list.length == index) {
           list[index-1] = value
         } else {
@@ -89,8 +85,12 @@ export default class CreatePoll extends Component {
       axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
       .then((newBracket) => {
         console.log(newBracket.data)
-        console.log(this.state.redirect, "REDIRECTING...")
-        this.setState({redirect: true})
+        if (!newBracket.data.msg.includes('created')) {
+          this.setState({error: true, loading: false})
+        } else {
+          this.setState({redirect: true, loading: false})
+        }
+        
         
       })
     }
@@ -122,6 +122,9 @@ export default class CreatePoll extends Component {
       M.AutoInit(); 
       if (this.state.redirect === true) {
         return <Redirect to='/finishedcreate' />
+      }
+      if (this.state.error) {
+        return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
       }
       return (
         <React.Fragment>
