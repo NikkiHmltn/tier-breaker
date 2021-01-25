@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import './css/Step2.css'
 import axios from 'axios';
 import M from 'materialize-css';
 
@@ -21,9 +22,7 @@ export default class EditBracket extends Component {
     M.AutoInit(); 
    
     this.setState({loading: true})
-    // DONT FORGET TO CHANGE THE BRACKET ID TO WHATEVER RUBEN HAS IT SET TO 
     axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.props.match.params.key}`)
-    //SERIOUSLY DONT FORGET 
     .then((bracket) => {
       if (bracket.data.msg === 'no bracket found') {
         this.setState({error: true, loading: false})
@@ -110,12 +109,12 @@ export default class EditBracket extends Component {
       </div>
     }
     if (this.state.error) {
-      return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
+      return <div style={{color: "red"}}>AN ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
     }
     return (
       <div className="EditBracket">
         <h2>{this.state.title}</h2>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="Forms">
           {this.state.private == true ? (
           <div>
           <h4>Currently: Private</h4>
@@ -146,7 +145,8 @@ export default class EditBracket extends Component {
             value={this.state.title}
             onChange={this.handleChange} 
           />
-          <a class="waves-effect waves-light btn pink" onClick={this.handleSubmit}>Submit</a>
+          <a class="waves-effect waves-light btn pink" style={{margin: "10px"}} onClick={this.handleSubmit}>Submit</a>
+          
           <a class="waves-effect waves-light btn pink" onClick={this.handleDelete}>DELETE</a>
         </form>
       </div>
