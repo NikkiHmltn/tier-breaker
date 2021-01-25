@@ -5,6 +5,7 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 export default class Bracket extends Component {
+
      constructor(props) {
         super(props);
         this.state = {
@@ -104,6 +105,7 @@ handleSubmit = (e, k) => {
 
     let key = []
     for (let k in this.state.voting) {
+
       key.push(<div className="voting" key={k}><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
     }
     if (this.state.redirect) {
@@ -113,6 +115,7 @@ handleSubmit = (e, k) => {
     }
     if (this.state.error) {
       return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
+
     }
 
     return (
