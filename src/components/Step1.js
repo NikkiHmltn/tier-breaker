@@ -13,7 +13,6 @@ export default class Step1 extends Component {
     }
 
     render() {
-
         if (this.props.currentStep !== 1) {
             // Prop: The current step
             return null;
@@ -21,15 +20,15 @@ export default class Step1 extends Component {
 
         return (
             <div className="Forms">
-                <label  htmlFor="title">Title/Question</label>
+                <label htmlFor="title">Title/Question</label>
                 <input
                     className="input-field"
                     id="title"
                     name="title"
                     type="text"
                     placeholder="Who would win a hot dog eating contest?"
-                    value={this.props.title} 
-                    onChange={this.props.handleChange} 
+                    value={this.props.title}
+                    onChange={this.props.handleChange}
                 />
                 <div className="input-field">
                     <select
