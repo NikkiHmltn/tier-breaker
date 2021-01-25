@@ -72,16 +72,15 @@ export default class Bracket extends Component {
                 this.setState({ redirect: true, loading: false });
             });
 
-        socket.on('vote_cast', (data) => {
-            if (data.key === this.state.key) {
-                axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`).then((res) => {
-                    console.log(res);
-                    this.setState({ voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1] });
-                });
+      socket.on('vote_cast', (data) => {
+          if (data.key === this.state.key) {
+              axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`).then((res) => {
+                console.log(res);
+                this.setState({ voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1] });
+              });
             }
         });
     }
-
     componentWillUnmount() {
         console.log('unmount');
         console.log(this.state.socket);
