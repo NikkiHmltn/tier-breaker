@@ -6,7 +6,8 @@ import VoteSubmitted from './VoteSubmitted';
 import './css/Bracket.css';
 
 export default class Bracket extends Component {
-    constructor(props) {
+
+     constructor(props) {
         super(props);
         this.state = {
             socket: null,
@@ -114,7 +115,6 @@ export default class Bracket extends Component {
         if (this.state.loading) {
             return <p>LOADING...</p>;
         }
-
         let key = [];
         for (let k in this.state.voting) {
             key.push(

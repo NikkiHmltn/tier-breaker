@@ -1,0 +1,18 @@
+.material-icons {
+    padding: 5px;
+}
+
+button {
+    background-color: rgb(255, 129, 129);
+    border: none;
+    border-radius: 10px;
+}
+
+.pollkey {
+    margin-top: 60px;
+}
+
+hr {
+    width: 700px;
+    display: inline-flex;
+}

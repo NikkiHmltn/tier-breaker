@@ -17,7 +17,8 @@ export default class CreatePoll extends Component {
             display: '',
             private: false,
             list: [],
-            redirect: false
+            redirect: false,
+            data: ''
         };
 
         this.handleChange = this.handleChange.bind(this);
@@ -154,3 +155,4 @@ export default class CreatePoll extends Component {
         );
     }
 }
+
