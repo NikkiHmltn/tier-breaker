@@ -15,7 +15,7 @@
     padding: 20px;
 }
 
-.bracket-card a {
+.bracket-card p.vote-view {
     color: white;
 }
 
@@ -23,7 +23,7 @@
     margin: 0;
 }
 
-.bracket-card p {
+.bracket-card p.date {
     margin: 0;
     align-self: flex-start;
 }

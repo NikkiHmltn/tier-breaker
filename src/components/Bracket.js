@@ -1,26 +1,24 @@
-import { Link, Redirect} from "react-router-dom";
-import React, {Component} from 'react'
+import { Link, Redirect } from 'react-router-dom';
+import React, { Component } from 'react';
 import './css/Bracket.css';
-import axios from 'axios'
-import io from 'socket.io-client'
-
+import axios from 'axios';
+import io from 'socket.io-client';
 
 export default class Bracket extends Component {
-  constructor(props){
-    super(props)
+     constructor(props) {
+        super(props);
 
-    this.state = {
-      socket: null,
-      key: this.props.history.location.state.key,
-      voting: [{}],
-      loading: true,
-      title: '',
-      error: false,
-      redirect: false
+        this.state = {
+            socket: null,
+            key: this.props.history.location.state.key || this.props.location.state,
+            voting: [{}],
+            loading: true,
+            title: '',
+            error: false,
+            redirect: false
+        };
     }
-  }
-  
-
+ 
   componentDidMount() {
     const setCurrentSocket = (s) => {
       this.setState({socket: s})
@@ -51,12 +49,12 @@ export default class Bracket extends Component {
           axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
           .then((res) => {
             this.setState({voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1]})
-          })
+          }).catch(err => this.setState({error: true})
         }
       })
     }
 
-    
+
 handleSubmit = (e, k) => {
   e.preventDefault()
     let votingCount = {
@@ -75,14 +73,14 @@ handleSubmit = (e, k) => {
     
   }
 
+    render() {
+        if (this.state.loading) {
+            return <p>LOADING...</p>;
+        }
 
-  render() {
-    if (this.state.loading) {
-      return <p>LOADING...</p>
-    }
     let key = []
     for (let k in this.state.voting) {
-      key.push(<div className="voting"><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
+      key.push(<div className="voting" key={k}><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
     }
     if (this.state.redirect) {
       return(
@@ -101,9 +99,10 @@ handleSubmit = (e, k) => {
         </div>
         <hr></hr>
         <Link to="/votesubmitted">
-          <a onClick={this.handleSubmit} className="waves-effect waves-light btn pink">Submit Vote</a>
+          <button type="button" onClick={this.handleSubmit} className="waves-effect waves-light btn pink">Submit Vote</button>
         </Link>
       </div>
     );
   }
   }
+
