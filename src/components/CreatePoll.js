@@ -29,6 +29,10 @@ export default class CreatePoll extends Component {
         M.AutoInit();
     }
 
+    componentDidUpdate() {
+        M.AutoInit();
+    }
+
     _next() {
         let currentStep = this.state.currentStep;
         currentStep = currentStep >= 2 ? 2 : currentStep + 1;
@@ -77,19 +81,20 @@ export default class CreatePoll extends Component {
             options_list: this.state.list,
             num_options: num_options
         };
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket).then((newBracket) => {
-            console.log(newBracket.data);
-            if (!newBracket.data.msg.includes('created')) {
+        axios
+            .post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
+            .then((newBracket) => {
+                console.log(newBracket.data);
+                if (!newBracket.data.msg.includes('created')) {
+                    this.setState({ error: true, loading: false });
+                } else {
+                    this.setState({ redirect: true, loading: false });
+                }
+            })
+            .catch((err) => {
                 this.setState({ error: true, loading: false });
-            } else {
-                this.setState({ redirect: true, loading: false });
-            }
-        });
+            });
     };
-
-    componentDidUpdate() {
-        M.AutoInit();
-    }
 
     get previousButton() {
         let currentStep = this.state.currentStep;

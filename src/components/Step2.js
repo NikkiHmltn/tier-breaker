@@ -2,18 +2,25 @@ import React, { Component } from 'react';
 import './css/Step2.css';
 
 export default class Step2 extends Component {
-    
     render() {
-      if (this.props.currentStep !== 2) {
+        if (this.props.currentStep !== 2) {
             // Prop: The current step
             return null;
         }
-      let optionNum = parseInt(this.props.options)
-      
-      function makeInput(optionNumber, props) {
-        return <input type="text" placeholder={"Option " + optionNumber} name={"option-" + optionNumber} value={props.list} onChange={props.handleChange}/>
-    }
-      const matchups = []
+        let optionNum = parseInt(this.props.options);
+
+        function makeInput(optionNumber, props) {
+            return (
+                <input
+                    type="text"
+                    placeholder={'Option ' + optionNumber}
+                    name={'option-' + optionNumber}
+                    value={props.list}
+                    onChange={props.handleChange}
+                />
+            );
+        }
+        const matchups = [];
 
         for (let i = 1; i < optionNum; i += 2) {
             let option1 = makeInput(i, this.props);

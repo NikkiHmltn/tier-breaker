@@ -24,13 +24,20 @@ function App() {
                 <Route exact path="/entercode" component={EnterCode} />
                 <Route exact path="/createpoll" component={CreatePoll} />
                 <Route exact path="/finishedcreate" component={FinishedCreate} />
-                <Route exact path="/bracket" component={Bracket} />
+                <Route
+                    exact
+                    path="/bracket"
+                    render={({ location, history }) => {
+                        return <Bracket history={history} location={location} />;
+                    }}
+                />
                 <Route exact path="/editbracket" component={EditBracket} />
                 <Route exact path="/vote" component={Vote} />
                 <Route exact path="/votesubmitted" component={VoteSubmitted} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/public" component={Public} />
                 <Route path="*" component={FourOFour} />
+                <Route exact path="/404" component={FourOFour} />
             </Switch>
         </div>
     );
