@@ -88,7 +88,9 @@ export default class CreatePoll extends Component {
             } else {
                 this.setState({ redirect: true, loading: false });
             }
-        });
+        }) .catch((err) => {
+        this.setState({error: true, loading: false})
+      });
     };
 
     get previousButton() {
