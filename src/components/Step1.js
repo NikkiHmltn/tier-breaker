@@ -8,11 +8,7 @@ export default class Step1 extends Component {
     }
 
     componentDidMount() {
-        console.log('in mount');
-        let collapsible = document.querySelectorAll('.collapsible');
-
         M.AutoInit();
-        M.Collapsible.init(collapsible, {});
     }
 
     render() {
@@ -22,8 +18,6 @@ export default class Step1 extends Component {
             return null;
         }
 
-
-        // The markup for the Step 1 UI
         return (
             <div>
                 <label htmlFor="title">Title/Question</label>
@@ -33,8 +27,8 @@ export default class Step1 extends Component {
                     name="title"
                     type="text"
                     placeholder="Who would win a hot dog eating contest?"
-                    value={this.props.title} // Prop: The email input data
-                    onChange={this.props.handleChange} // Prop: Puts data into state
+                    value={this.props.title} 
+                    onChange={this.props.handleChange} 
                 />
                 <div className="input-field">
                     <select

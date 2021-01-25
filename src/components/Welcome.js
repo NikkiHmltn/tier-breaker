@@ -52,6 +52,7 @@ function Welcome() {
                 </Link>
             </div>
         </div>
+        </div>
     );
 }
 
