@@ -5,19 +5,19 @@ import axios from 'axios';
 import io from 'socket.io-client';
 
 export default class Bracket extends Component {
-     constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            socket: null,
-            key: this.props.history.location.state.key || this.props.location.state,
-            voting: [{}],
-            loading: true,
-            title: '',
-            error: false,
-            redirect: false
-        };
-    }
+    this.state = {
+      socket: null,
+      key: this.props.history.location.state.key || this.props.location.state,
+      voting: [{}],
+      loading: true,
+      title: '',
+      error: false,
+      redirect: false
+    };
+  }
  
   componentDidMount() {
     const setCurrentSocket = (s) => {
@@ -40,23 +40,22 @@ export default class Bracket extends Component {
         this.setState({key: res.data.key, voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1], loading: false, title:res.data.title})
       }
       })
-      .catch((err) => {
-        this.setState({redirect: true})
-      })
-      socket.on('vote_cast', (data) => {
-        if (data.key === this.state.key) {
-          
-          axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
-          .then((res) => {
-            this.setState({voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1]})
-          }).catch(err => this.setState({error: true})
-        }
-      })
-    }
+    .catch((err) => {
+      this.setState({redirect: true})
+    })
+    socket.on('vote_cast', (data) => {
+      if (data.key === this.state.key) {
+        axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
+        .then((res) => {
+          this.setState({voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1]})
+        })
+        .catch((err) => this.setState({error: true}))
+      }
+    })
+  }
 
-
-handleSubmit = (e, k) => {
-  e.preventDefault()
+  handleSubmit = (e, k) => {
+    e.preventDefault()
     let votingCount = {
       option: k
     }
@@ -70,39 +69,37 @@ handleSubmit = (e, k) => {
       }
       
     }).catch((err) => {this.setState({error: true})})
-    
   }
 
-    render() {
-        if (this.state.loading) {
-            return <p>LOADING...</p>;
-        }
+  render() {
+    if (this.state.loading) {
+      return <p>LOADING...</p>;
+  }
 
-    let key = []
-    for (let k in this.state.voting) {
-      key.push(<div className="voting" key={k}><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
-    }
-    if (this.state.redirect) {
-      return(
-        <Redirect to="/404" />
-      )
-    }
-    if (this.state.error) {
-      return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
-    }
+  let key = []
+  for (let k in this.state.voting) {
+    key.push(<div className="voting" key={k}><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
+  }
+  if (this.state.redirect) {
+    return(
+      <Redirect to="/404" />
+    )
+  }
+  if (this.state.error) {
+    return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
+  }
 
-    return (
-      <div className="Vote">
-        <h2>{this.state.title}?</h2>
-        <div className="container">
-        {key}
-        </div>
-        <hr></hr>
-        <Link to="/votesubmitted">
-          <button type="button" onClick={this.handleSubmit} className="waves-effect waves-light btn pink">Submit Vote</button>
-        </Link>
+  return (
+    <div className="Vote">
+      <h2>{this.state.title}?</h2>
+      <div className="container">
+      {key}
       </div>
-    );
+      <hr></hr>
+      <Link to="/votesubmitted">
+        <button type="button" onClick={this.handleSubmit} className="waves-effect waves-light btn pink">Submit Vote</button>
+      </Link>
+    </div>
+  );
   }
-  }
-
+}
