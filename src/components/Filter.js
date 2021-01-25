@@ -40,7 +40,7 @@ function Filter(props) {
             <div className={`${hidden} Filter-popup`}>{monthDisp}</div>
 
             <div className="Filter-bubble" onClick={() => handleClick()}>
-                <i class="material-icons">filter_list</i>
+                <i className="material-icons">filter_list</i>
             </div>
         </>
     );

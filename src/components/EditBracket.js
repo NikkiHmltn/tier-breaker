@@ -1,7 +1,7 @@
-import React, {Component} from 'react';
-import {Redirect} from 'react-router-dom'
-import axios from 'axios'
-import M from "materialize-css"
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
+import M from 'materialize-css';
 
 export default class EditBracket extends Component {
   constructor() {
@@ -11,9 +11,10 @@ export default class EditBracket extends Component {
       private: "",
       time_duration: "", 
       title: "",
-      rounds: ''
+      rounds: '',
+      redirect: false
+        };
     }
-  }
 
   componentDidMount() {
     M.AutoInit(); 
@@ -23,55 +24,63 @@ export default class EditBracket extends Component {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/d10365ec`)
     //SERIOUSLY DONT FORGET 
     .then((bracket) => {
-      console.log(bracket)
-      let startBracket = bracket.data
-      this.setState({
-        key: startBracket.key, 
-        private: startBracket.private,
-        title: startBracket.title,
-        redirect: false, 
-        loading: false,
-        error: false
-      })
+      if (bracket.data.msg === 'no bracket found') {
+        this.setState({error: true, loading: false})
+      } else {
+        let startBracket = bracket.data
+        this.setState({
+          key: startBracket.key, 
+          private: startBracket.private,
+          title: startBracket.title,
+          redirect: false, 
+          loading: false,
+        })
+      }
+    })
+    .catch((err) => {
+      this.setState({redirect: true})
     })
   }
 
-  handleChange = (event) => {
-    const {name, value} = event.target
+    handleChange = (event) => {
+        const { name, value } = event.target;
 
-    this.setState({
-      [name]: value
-    })   
-  }
 
-  handlePrivate = (event) => {
-    const {name, value} = event.target
-    if (name === 'private' && value === "on") {
-      this.setState({private: true})
-    } else if (name=== 'public' && value === 'on'){
-      this.setState({private: false})
-    } 
-  }
+        this.setState({
+            [name]: value
+        });
+    };
 
-  handleSubmit = (event) => {
-    event.preventDefault()
-    this.setState({loading: true})
-      const newBracket = {
-        title: this.state.title,
-        private: this.state.private,
-      }
-      axios.put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
-      .then((newBracket) => {
-        if (newBracket.data.msg.includes("updated")) {
-          this.setState({redirect: true, loading: false})
-        } else {
-          this.setState({loading: false, error: true})
+    handlePrivate = (event) => {
+        const { name, value } = event.target;
+        if (name === 'private' && value === 'on') {
+            this.setState({ private: true });
+        } else if (name === 'public' && value === 'on') {
+            this.setState({ private: false });
         }
-        
-      })
-  }
+    }
+    
+       handleSubmit = (event) => {
+        event.preventDefault();
+        this.setState({ loading: true });
+        const newBracket = {
+            title: this.state.title,
+            private: this.state.private
+        };
+        axios
+            .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
+            .then((newBracket) => {
+                if (newBracket.data.msg.includes('updated')) {
+                    this.setState({ redirect: true, loading: false });
+                } else {
+                    this.setState({ loading: false, error: true });
+                }
+            }).catch((err)=> {
+                this.setState({error: true})
+              });
+    };
 
-  handleDelete = (event) => {
+    handleDelete = (event) => {
     axios.delete(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/delete`)
     .then((res)=> {
       if (typeof res.data.msg === 'string' && res.data.msg.includes('deleted')) {
@@ -80,11 +89,14 @@ export default class EditBracket extends Component {
         this.setState({ loading: false, error: true });
       }
     })
+    .catch((err) => {
+      this.setState({error: true})
+    })
   }
 
   render(){
     if (this.state.redirect) {
-      return <Redirect to='/' />
+      return <Redirect to='/404' />
     }
     if (this.state.loading) {
       <div>
@@ -131,14 +143,7 @@ export default class EditBracket extends Component {
           <a class="waves-effect waves-light btn pink" onClick={this.handleSubmit}>Submit</a>
           <a class="waves-effect waves-light btn pink" onClick={this.handleDelete}>DELETE</a>
         </form>
-        
-
-
-         
       </div>
     );
   }
-
-    
 }
-  
