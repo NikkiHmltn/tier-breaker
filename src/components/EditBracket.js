@@ -12,16 +12,17 @@ export default class EditBracket extends Component {
       time_duration: "", 
       title: "",
       rounds: '',
-      redirect: false
-        };
-    }
+      redirect: false,
+      successRedirect: false
+    };
+  }
 
   componentDidMount() {
     M.AutoInit(); 
    
     this.setState({loading: true})
     // DONT FORGET TO CHANGE THE BRACKET ID TO WHATEVER RUBEN HAS IT SET TO 
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/d10365ec`)
+    axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.props.match.params.key}`)
     //SERIOUSLY DONT FORGET 
     .then((bracket) => {
       if (bracket.data.msg === 'no bracket found') {
@@ -38,7 +39,7 @@ export default class EditBracket extends Component {
       }
     })
     .catch((err) => {
-      this.setState({redirect: true})
+      this.setState({redirect: true, loading: false})
     })
   }
 
@@ -70,8 +71,9 @@ export default class EditBracket extends Component {
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
             .then((newBracket) => {
-                if (newBracket.data.msg.includes('updated')) {
-                    this.setState({ redirect: true, loading: false });
+              console.log(newBracket)
+                if (newBracket.status === 200) {
+                    this.setState({ successRedirect: true, loading: false });
                 } else {
                     this.setState({ loading: false, error: true });
                 }
@@ -95,8 +97,12 @@ export default class EditBracket extends Component {
   }
 
   render(){
+    
     if (this.state.redirect) {
       return <Redirect to='/404' />
+    }
+    if (this.state.successRedirect) {
+      return <Redirect to={{ pathname: '/bracket', state: this.state.key }} />
     }
     if (this.state.loading) {
       <div>
@@ -108,7 +114,7 @@ export default class EditBracket extends Component {
     }
     return (
       <div className="EditBracket">
-        <h2>{this.state.key}</h2>
+        <h2>{this.state.title}</h2>
         <form onSubmit={this.handleSubmit}>
           {this.state.private == true ? (
           <div>

@@ -19,14 +19,14 @@ const About = () => {
                                 <div className="card-body">
                                     <h5 className="card-title-dev">Simone Schneeburg</h5>
                                     <p className="desc">FULLSTACK DEVELOPER</p>
-                                    <a href="." className="btn">
+                                    <a href="https://github.com/sschneeberg" className="btn">
                                         <img
                                             className="github-img"
                                             src="https://i.imgur.com/GpOnmrS.png"
                                             alt="github-link"
                                         />
                                     </a>
-                                    <a href="." className="btn">
+                                    <a href="https://www.linkedin.com/in/simone-schneeberg/" className="btn">
                                         <img
                                             className="linkedin-img"
                                             src="https://i.imgur.com/oAwmaXD.png"
@@ -41,14 +41,14 @@ const About = () => {
                                 <div className="card-body">
                                     <h5 className="card-title-dev">Nicole Hamilton</h5>
                                     <p className="desc">FULLSTACK DEVELOPER</p>
-                                    <a href="." className="btn">
+                                    <a href="https://github.com/NikkiHmltn" className="btn" target="_black">
                                         <img
                                             className="github-img"
                                             src="https://i.imgur.com/GpOnmrS.png"
                                             alt="github-link"
                                         />
                                     </a>
-                                    <a href="." className="btn">
+                                    <a href="https://www.linkedin.com/in/nikkihmltn/" className="btn" target="_blank">
                                         <img
                                             className="linkedin-img"
                                             src="https://i.imgur.com/oAwmaXD.png"
@@ -63,14 +63,14 @@ const About = () => {
                                 <div className="card-body">
                                     <h5 className="card-title-dev">Ruben Cedeno</h5>
                                     <p className="desc">FULLSTACK DEVELOPER</p>
-                                    <a href="." className="btn">
+                                    <a href="https://github.com/anonyymous1" className="btn" target="_blank">
                                         <img
                                             className="github-img"
                                             src="https://i.imgur.com/GpOnmrS.png"
                                             alt="github-link"
                                         />
                                     </a>
-                                    <a href="." className="btn">
+                                    <a href="https://www.linkedin.com/in/ruben-cedeno-756b309b/" className="btn" target="_black">
                                         <img
                                             className="linkedin-img"
                                             src="https://i.imgur.com/oAwmaXD.png"
