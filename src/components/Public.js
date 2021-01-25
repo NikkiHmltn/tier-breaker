@@ -18,12 +18,7 @@ class Public extends Component {
     componentDidMount() {
         this.setState({loading: true})
         axios.get(`${process.env.REACT_APP_SERVER_URL}/brackets`).then((response) => {
-            if (response.data.msg.includes('public_brackets')) {
-                this.setState({ publicBrackets: response.data.public_brackets, loading: false });
-            } else {
-                this.setState({loading: false, error: true})
-            }
-            
+                this.setState({ publicBrackets: response.data.public_brackets, loading: false });            
         });
     }
 

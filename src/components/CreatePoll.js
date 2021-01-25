@@ -17,7 +17,8 @@ export default class CreatePoll extends Component {
             display: '',
             private: false,
             list: [],
-            redirect: false
+            redirect: false,
+            data: ''
         };
 
       this.handleChange = this.handleChange.bind(this);
@@ -88,6 +89,7 @@ export default class CreatePoll extends Component {
       axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
       .then((newBracket) => {
         console.log(newBracket.data)
+        this.setState({data: newBracket.data})
         if (!newBracket.data.msg.includes('created')) {
           this.setState({error: true, loading: false})
         } else {
@@ -124,7 +126,14 @@ export default class CreatePoll extends Component {
     render() {  
       M.AutoInit(); 
       if (this.state.redirect === true) {
-        return <Redirect to='/finishedcreate' />
+        return (
+          <Redirect
+            to={{
+            pathname: '/finishedcreate',
+            state: this.state.data
+          }}
+        />
+          )
       }
       if (this.state.error) {
         return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>

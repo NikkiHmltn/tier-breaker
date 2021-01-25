@@ -14,7 +14,8 @@ export default class Bracket extends Component {
       key: this.props.history.location.state.key,
       voting: [{}],
       loading: true,
-      title: ''
+      title: '',
+      redirect: false
     }
   }
   
@@ -82,7 +83,12 @@ handleSubmit = (e, k) => {
     console.log(this.state.voting)
     for (let k in this.state.voting) {
       console.log(k, this.state.voting[k])
-      key.push(<div className="voting"><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
+      key.push(
+      <div className="voting"><p>{k}: {this.state.voting[k]}<br/>
+      {/* VOTE BUTTON */}
+      <button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button>
+      </p></div>
+      )
     }
 
     return (
