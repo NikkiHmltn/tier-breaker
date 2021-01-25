@@ -30,7 +30,8 @@ export default class EditBracket extends Component {
         private: startBracket.private,
         title: startBracket.title,
         redirect: false, 
-        loading: false
+        loading: false,
+        error: false
       })
     })
   }
@@ -61,7 +62,12 @@ export default class EditBracket extends Component {
       }
       axios.put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
       .then((newBracket) => {
-        this.setState({redirect: true, loading: false})
+        if (newBracket.data.msg.includes("updated")) {
+          this.setState({redirect: true, loading: false})
+        } else {
+          this.setState({loading: false, error: true})
+        }
+        
       })
   }
 
@@ -84,6 +90,9 @@ export default class EditBracket extends Component {
       <div>
         LOADING....
       </div>
+    }
+    if (this.state.error) {
+      return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
     }
     return (
       <div className="EditBracket">
