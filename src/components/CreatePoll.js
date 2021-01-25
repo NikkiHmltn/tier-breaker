@@ -52,7 +52,6 @@ export default class CreatePoll extends Component {
       if (name === 'private' && value === "on") {
         this.setState({private: true})
       }
-      console.log(name, value)
       if (name.includes('option-')){
         let index = parseInt(name.split('-')[1])
         let list = this.state.list.slice(0, this.state.list.length)
@@ -72,9 +71,6 @@ export default class CreatePoll extends Component {
 
     // Trigger an alert on form submission
     handleSubmit = (event) => {
-      
-
-
       event.preventDefault()
       let num_options = this.state.list.length
       const newBracket = {
@@ -87,14 +83,14 @@ export default class CreatePoll extends Component {
       }
       axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
       .then((newBracket) => {
-        console.log(newBracket.data)
         if (!newBracket.data.msg.includes('created')) {
           this.setState({error: true, loading: false})
         } else {
           this.setState({redirect: true, loading: false})
         }
-        
-        
+      })
+      .catch((err) => {
+        this.setState({error: true, loading: false})
       })
     }
 

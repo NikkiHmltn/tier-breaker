@@ -14,15 +14,14 @@ export default class Bracket extends Component {
       key: this.props.history.location.state.key,
       voting: [{}],
       loading: true,
-      title: ''
+      title: '',
+      error: false,
+      redirect: false
     }
   }
   
 
   componentDidMount() {
-    console.log('in mount')
-    // console.log(this.props.history.location.state.key)
-
     const setCurrentSocket = (s) => {
       this.setState({socket: s})
     }
@@ -37,25 +36,23 @@ export default class Bracket extends Component {
     this.setState({loading: true})
     axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
     .then((res) => {
-      console.log(res)
       if (res.data.msg === "no bracket found"){
-        <Redirect to="/entercode" />
-        console.log('nope');
+        this.setState({redirect: true})
       } else {
         this.setState({key: res.data.key, voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1], loading: false, title:res.data.title})
       }
       })
+      .catch((err) => {
+        this.setState({redirect: true})
+      })
       socket.on('vote_cast', (data) => {
-        console.log(data)
         if (data.key === this.state.key) {
           
           axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
           .then((res) => {
-            console.log(res)
             this.setState({voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1]})
           })
         }
-        console.log('hello from socket')
       })
     }
 
@@ -68,8 +65,13 @@ handleSubmit = (e, k) => {
     this.setState({loading: true})
     axios.put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/vote`, votingCount)
     .then((res) => {
-      this.setState({loading: false})
-    })
+      if (res.data.msg.includes('updated')) {
+        this.setState({loading: false})
+      } else {
+        this.setState({error: true, loading: false})
+      }
+      
+    }).catch((err) => {this.setState({error: true})})
     
   }
 
@@ -79,10 +81,19 @@ handleSubmit = (e, k) => {
       return <p>LOADING...</p>
     }
     let key = []
-    console.log(this.state.voting)
     for (let k in this.state.voting) {
-      console.log(k, this.state.voting[k])
       key.push(<div className="voting"><p>{k}: {this.state.voting[k]}<br/><button onClick={(e) => {this.handleSubmit(e, k)}}>Vote</button></p></div>)
+    }
+    if (this.state.redirect) {
+      return(
+        <Redirect to="/" />
+      )
+    }
+    if (this.state.error) {
+      return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
+      }
+    if (this.state.redirect) {
+      <Redirect to="/entercode" />
     }
 
     return (

@@ -11,7 +11,8 @@ export default class EditBracket extends Component {
       private: "",
       time_duration: "", 
       title: "",
-      rounds: ''
+      rounds: '',
+      redirect: false
     }
   }
 
@@ -23,22 +24,26 @@ export default class EditBracket extends Component {
     axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/d10365ec`)
     //SERIOUSLY DONT FORGET 
     .then((bracket) => {
-      console.log(bracket)
-      let startBracket = bracket.data
-      this.setState({
-        key: startBracket.key, 
-        private: startBracket.private,
-        title: startBracket.title,
-        redirect: false, 
-        loading: false,
-        error: false
-      })
+      if (bracket.data.msg === 'no bracket found') {
+        this.setState({error: true, loading: false})
+      } else {
+        let startBracket = bracket.data
+        this.setState({
+          key: startBracket.key, 
+          private: startBracket.private,
+          title: startBracket.title,
+          redirect: false, 
+          loading: false,
+        })
+      }
+    })
+    .catch((err) => {
+      this.setState({redirect: true})
     })
   }
 
   handleChange = (event) => {
     const {name, value} = event.target
-
     this.setState({
       [name]: value
     })   
@@ -67,7 +72,9 @@ export default class EditBracket extends Component {
         } else {
           this.setState({loading: false, error: true})
         }
-        
+      })
+      .catch((err)=> {
+        this.setState({error: true})
       })
   }
 
@@ -79,6 +86,9 @@ export default class EditBracket extends Component {
       } else {
         this.setState({ loading: false, error: true });
       }
+    })
+    .catch((err) => {
+      this.setState({error: true})
     })
   }
 
@@ -131,10 +141,6 @@ export default class EditBracket extends Component {
           <a class="waves-effect waves-light btn pink" onClick={this.handleSubmit}>Submit</a>
           <a class="waves-effect waves-light btn pink" onClick={this.handleDelete}>DELETE</a>
         </form>
-        
-
-
-         
       </div>
     );
   }

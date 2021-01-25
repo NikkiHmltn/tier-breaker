@@ -5,29 +5,33 @@ import './css/EnterCode.css';
 function EnterCode() {
 
   const [pollKey, setPollKey] = useState('');
-  const [bracket, setBracket] = useState('')
+  const [bracket, setBracket] = useState('');
+  const [error, setError] = useState('');
+
 
   const history = useHistory();
 
   const handleSubmit = (e) => {
-    console.log('----Poll Key----');
-    console.log(`Searched For: ${pollKey}`);
     e.preventDefault()
 
     axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${pollKey}`).then((response) => {
-      setBracket(response.data._brackets);
-      // console.log(response.data);
+      if (response.data.msg === 'no bracket found') {
+        setError({error: true})
+      } else {
+        setBracket(response.data._brackets);
 
-      history.push({
-        pathname: `/bracket/`,
-        state: { key: pollKey,  }
-      })
-
+        history.push({
+          pathname: `/bracket/`,
+          state: { key: pollKey,  }
+        })
+      }
+      
     })
   }
 
-
   return (
+    <>
+    {error ? <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div> : null}
     <div className="EnterCode">
       <h1>Enter Code</h1>
       <div className="six-box">
@@ -37,6 +41,7 @@ function EnterCode() {
         <a onClick={handleSubmit} href="." className="waves-effect waves-light btn pink">Vote!</a>
       </div>
     </div>
+    </>
   );
 }
 

@@ -11,20 +11,23 @@ class Public extends Component {
             publicBrackets: [],
             month: '',
             error: false,
-            loading: false
+            loading: false,
+            redirect: false
         };
     }
 
     componentDidMount() {
         this.setState({loading: true})
         axios.get(`${process.env.REACT_APP_SERVER_URL}/brackets`).then((response) => {
-            if (response.data.msg.includes('public_brackets')) {
+            if (response.data.public_brackets) {
                 this.setState({ publicBrackets: response.data.public_brackets, loading: false });
             } else {
                 this.setState({loading: false, error: true})
             }
-            
-        });
+        })
+        .catch((err) => {
+            this.setState({redirect: true})
+        })
     }
 
     filter = (month) => {
@@ -62,6 +65,9 @@ class Public extends Component {
         }
         if (this.state.loading) {
             return <div>LOADING....</div>
+        }
+        if (this.state.redirect) {
+            <Redirect to="/" />
         }
         return (
             <>
