@@ -17,7 +17,6 @@ h1.logo-title {
 
 .words-box {
     display: inline-block;
-    border: rgb(0, 0, 0) 1px solid;
     border-radius: 15px;
     width: 50vw;
     height: 100%;
@@ -44,4 +43,83 @@ h1.logo-title {
 
 .welcome-buttons button {
     background-color: #ee6e73;
+}
+
+@media (max-width: 700px) {
+    .instruction-box {
+        display: flex;
+        flex-direction: column;
+        border: rgb(0, 0, 0) 1px solid;
+        border-radius: 15px;
+        width: 80vw;
+        height: 60vh;
+        min-height: 500px;
+        margin: 0 auto;
+        padding: 25px;
+    }
+    
+    .words-box {
+        display: inline-block;
+        width: 70vw;
+        height: 100%;
+        padding: 15px;
+        padding-right: 25px;
+    }
+    .image-box {
+        display: inline-block;
+        width: 70vw;
+        height: 100%;
+        padding: 15px;
+        padding-right: 25px;
+    }
+    .welcome-buttons {
+        margin: 15rem auto;
+        display: flex;
+        width: 25vw;
+        min-width: 450px;
+        justify-content: space-between;
+    }
+}
+
+@media (max-width: 500px) {
+    h1.logo-title {
+        margin: 25px;
+        margin-top: 30px;
+        margin-left: 10%;
+    }
+    .instruction-box {
+        display: flex;
+        flex-direction: column;
+        border: rgb(0, 0, 0) 1px solid;
+        border-radius: 15px;
+        width: 80vw;
+        height: 60vh;
+        min-height: 500px;
+        margin: 0 auto;
+        padding: 25px;
+    }
+    
+    .words-box {
+        display: inline-block;
+        width: 70vw;
+        height: 100%;
+        padding: 15px;
+        padding-right: 25px;
+    }
+
+    .welcome-buttons {
+        margin: 15rem auto;
+        display: flex;
+        width: 25vw;
+        min-width: 450px;
+        justify-content: space-between;
+    }
+    .image-box {
+        display: inline-block;
+        width: 70vw;
+        height: 100%;
+        padding: 15px;
+        padding-right: 25px;
+    }
+
 }
