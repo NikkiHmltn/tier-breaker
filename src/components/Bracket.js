@@ -86,14 +86,11 @@ handleSubmit = (e, k) => {
     }
     if (this.state.redirect) {
       return(
-        <Redirect to="/" />
+        <Redirect to="/404" />
       )
     }
     if (this.state.error) {
       return <div style={{color: "red"}}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>
-      }
-    if (this.state.redirect) {
-      <Redirect to="/entercode" />
     }
 
     return (

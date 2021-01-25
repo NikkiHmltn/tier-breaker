@@ -94,7 +94,7 @@ export default class EditBracket extends Component {
 
   render(){
     if (this.state.redirect) {
-      return <Redirect to='/' />
+      return <Redirect to='/404' />
     }
     if (this.state.loading) {
       <div>

@@ -67,7 +67,7 @@ class Public extends Component {
             return <div>LOADING....</div>
         }
         if (this.state.redirect) {
-            <Redirect to="/" />
+            <Redirect to="/404" />
         }
         return (
             <>
