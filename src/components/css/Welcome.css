@@ -14,33 +14,33 @@ h1.logo-title {
     padding: 25px;
   }
 
-  .words-box {
-    display: inline-block;
-    border: rgb(0, 0, 0) 1px solid;
-    border-radius: 15px;
-    width: 50vw;
-    height: 100%;
-    padding: 15px;
-    padding-right: 25px;
-  }
+.words-box {
+  display: inline-block;
+  border: rgb(0, 0, 0) 1px solid;
+  border-radius: 15px;
+  width: 50vw;
+  height: 100%;
+  padding: 15px;
+  padding-right: 25px;
+}
 
-  .step-instruct {
-    display: flex;
-    align-items: center;
-  }
+.step-instruct {
+  display: flex;
+  align-items: center;
+}
 
-  .step-instruct img {
-    height: 80px;
-  }
+.step-instruct img {
+  height: 80px;
+}
 
-  .welcome-buttons {
-    margin: 25px auto;
-    display: flex;
-    width: 25vw;
-    min-width: 250px;
-    justify-content: space-between;
-  }
+.welcome-buttons {
+  margin: 25px auto;
+  display: flex;
+  width: 25vw;
+  min-width: 250px;
+  justify-content: space-between;
+}
 
-  .welcome-buttons button {
-    background-color: #ee6e73;
-  }
+.welcome-buttons button {
+  background-color: #ee6e73;
+}
