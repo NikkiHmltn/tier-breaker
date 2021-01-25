@@ -1,3 +1,4 @@
+
 # Tier Breaker (Frontend Repository)
 
 The back end repo can be found at [github.com/sschneeberg/tierbreaker_backend](https://github.com/sschneeberg/tierbreaker_backend)
@@ -34,4 +35,5 @@ The show page for a bracket can be found by clicking through the public page or 
 A poll creator is given a special link that allows them to edit the title or question for their tournament or change its privacy setting.
 
 ![Edit bracket]()
+
 
