@@ -7,7 +7,6 @@ import io from 'socket.io-client';
 export default class Bracket extends Component {
     constructor(props) {
         super(props);
-
         this.state = {
             socket: null,
             key: this.props.history.location.state.key || this.props.location.state,
@@ -35,12 +34,32 @@ export default class Bracket extends Component {
                 <Redirect to="/entercode" />;
                 console.log('nope');
             } else {
-                this.setState({
-                    key: res.data.key,
-                    voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1],
-                    loading: false,
-                    title: res.data.title
-                });
+                //check if you need to tally the bracket:
+                const timeElapsed = res.data.round_duration * res.data.voting_options.votes.length * 86400000;
+                if (Date.now() - res.data.created_at.$date > timeElapsed && !res.data.end_display) {
+                    axios
+                        .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/tally`)
+                        .then((response) => {
+                            console.log(response);
+                            this.setState({
+                                key: response.data.bracket.key,
+                                voting:
+                                    response.data.bracket.voting_options.votes[
+                                        response.data.bracket.voting_options.votes.length - 1
+                                    ],
+                                loading: false,
+                                title: response.data.bracket.title
+                            });
+                        })
+                        .catch((err) => this.setState({ redirect: true, loading: false }));
+                } else {
+                    this.setState({
+                        key: res.data.key,
+                        voting: res.data.voting_options.votes[res.data.voting_options.votes.length - 1],
+                        loading: false,
+                        title: res.data.title
+                    });
+                }
             }
         });
         socket.on('vote_cast', (data) => {
