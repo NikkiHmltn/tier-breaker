@@ -30,7 +30,7 @@ function EnterCode() {
                     maxLength="8"></input>
             </div>
             <div>
-                <a onClick={handleSubmit} href="." className="waves-effect waves-light btn pink">
+                <a onClick={handleSubmit} href="." className="waves-effect waves-light btn ">
                     Vote!
                 </a>
             </div>
