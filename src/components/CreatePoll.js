@@ -62,6 +62,7 @@ export default class CreatePoll extends Component {
         } else {
           list.push(value)
         }
+        this.setState({list: list})
       }
         this.setState({
             [name]: value
@@ -72,6 +73,8 @@ export default class CreatePoll extends Component {
     // Trigger an alert on form submission
     handleSubmit = (event) => {
       
+
+
       event.preventDefault()
       let num_options = this.state.list.length
       const newBracket = {
