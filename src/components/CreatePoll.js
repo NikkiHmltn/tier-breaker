@@ -82,23 +82,26 @@ export default class CreatePoll extends Component {
             options_list: this.state.list,
             num_options: num_options
         };
-        axios.post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket).then((newBracket) => {
-            console.log(newBracket.data);
-            if (!newBracket.data.msg.includes('created')) {
+        axios
+            .post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
+            .then((newBracket) => {
+                console.log(newBracket.data);
+                if (!newBracket.data.msg.includes('created')) {
+                    this.setState({ error: true, loading: false });
+                } else {
+                    this.setState({ redirect: true, loading: false });
+                }
+            })
+            .catch((err) => {
                 this.setState({ error: true, loading: false });
-            } else {
-                this.setState({ redirect: true, loading: false });
-            }
-        }) .catch((err) => {
-        this.setState({error: true, loading: false})
-      });
+            });
     };
 
     get previousButton() {
         let currentStep = this.state.currentStep;
         if (currentStep !== 1) {
             return (
-                <a className="waves-effect waves-light btn pink" onClick={this._prev}>
+                <a className="waves-effect waves-light btn " onClick={this._prev}>
                     Previous
                 </a>
             );
@@ -110,7 +113,7 @@ export default class CreatePoll extends Component {
         let currentStep = this.state.currentStep;
         if (currentStep < 2) {
             return (
-                <a className="waves-effect waves-light btn pink" onClick={this._next}>
+                <a className="waves-effect waves-light btn " onClick={this._next}>
                     Next
                 </a>
             );

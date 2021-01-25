@@ -17,7 +17,7 @@ const About = () => {
                         <div className="col-sm-6">
                             <div className="card3">
                                 <div className="card-body">
-                                    <h5 className="card-title-dev">Simone Schneeburg</h5>
+                                    <h5 className="card-title-dev">Simone Schneeberg</h5>
                                     <p className="desc">FULLSTACK DEVELOPER</p>
                                     <a href="." className="btn">
                                         <img
