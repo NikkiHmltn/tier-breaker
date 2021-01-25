@@ -34,6 +34,9 @@ function Welcome() {
           <Link to="/entercode">
             <button className="waves-effect waves-light btn" type="button">Enter Code</button>
           </Link>
+          <Link to="/public">
+            <button className="waves-effect waves-light btn" type="button">Vote Public</button>
+          </Link>
 
         </div>
         </div>
