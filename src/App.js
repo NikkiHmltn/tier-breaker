@@ -37,6 +37,7 @@ function App() {
                 <Route exact path="/about" component={About} />
                 <Route exact path="/public" component={Public} />
                 <Route path="*" component={FourOFour} />
+                <Route exact path="/404" component={FourOFour} />
             </Switch>
         </div>
     );
