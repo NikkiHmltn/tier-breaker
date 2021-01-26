@@ -32,7 +32,6 @@ function Welcome() {
                         <p>That's it! Come back to see your votes roll in or view your tallied reuslts.</p>
                     </div>
                 </div>
-                <div className="image-box">Image</div>
             </div>
             <div className="welcome-buttons">
                 <Link to="/createpoll">
