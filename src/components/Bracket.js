@@ -75,9 +75,9 @@ export default class Bracket extends Component {
                 this.setState({ redirect: true, loading: false });
             });
         console.log(socket);
-        socket.emit('!!!');
-        const setConnection = () => {
-            console.log('CONNECTED _________________________________');
+        socket.emit('!!!', socket.id);
+        const setConnection = (id) => {
+            console.log('CONNECTED _________________________________', id);
             this.setState({ connected: true });
         };
         socket.on('¡¡¡', setConnection);
