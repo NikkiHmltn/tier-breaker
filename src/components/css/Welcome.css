@@ -6,7 +6,8 @@ h1.logo-title {
 .instruction-box {
     display: flex;
     justify-content: space-between;
-    border: rgb(0, 0, 0) 1px solid;
+    background-color: rgb(211, 211, 211);
+    /* border: rgb(0, 0, 0) 1px solid; */
     border-radius: 15px;
     width: 80vw;
     height: 60vh;
@@ -44,6 +45,7 @@ h1.logo-title {
 .welcome-buttons button {
     background-color: #ee6e73;
 }
+
 
 @media (max-width: 700px) {
     .instruction-box {

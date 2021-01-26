@@ -1,11 +1,13 @@
 .container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     border-radius: 10px;
     width: 100%;
+    height: 600px;
     padding-top: 50px;
+    border: orangered solid 1px;
 }
 
 .voting {
@@ -14,7 +16,8 @@
     background-color: rgb(202, 202, 202);
     min-width: 125px;
     filter: drop-shadow(5px 4px 4px #cccccc);
-    display: flex;
+    display: inline-block;
+    border: orangered solid 1px;
     justify-content: center;
     align-content: center;
     margin: 10px;
