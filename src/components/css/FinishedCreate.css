@@ -8,11 +8,35 @@ button {
     border-radius: 10px;
 }
 
-.pollkey {
-    margin-top: 60px;
-}
 
 hr {
     width: 700px;
+    height: 1px;
     display: inline-flex;
+    border: none;
+    background-color:rgb(255, 129, 129);
 }
+
+h3 a, button:hover {
+    cursor: pointer;
+}
+
+h3 a, button {
+    color: black;
+}
+
+.float-container {
+    padding: 20px;
+    height: 250px;
+    width: 100%;
+}
+
+.float-child {
+    width: 30%;
+    margin-left: 25px;
+    padding-bottom: 10px;
+    float: left;
+    background-color: rgb(218, 218, 218);
+    filter: drop-shadow(5px 4px 9px #919191);
+    border-radius: 10px;
+} 

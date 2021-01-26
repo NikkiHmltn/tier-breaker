@@ -5,6 +5,8 @@ function Welcome() {
     return (
         <div className="App">
             <h1 className="logo-title">Tier Breaker</h1>
+            <p>Hassle-free tournament creation. No signups required, no passwords to keep track
+                            of.</p>
             <div className="instruction-box">
                 <div className="words-box">
                     <h5>
@@ -30,8 +32,7 @@ function Welcome() {
                     <div className="step-instruct">
                         <img src="https://img.icons8.com/carbon-copy/100/000000/3-circle-c.png" alt="step three" />
                         <p>
-                            That's it! Hassle-free tournament creation. No signups required, no passwords to keep track
-                            of.
+                            That's it! 
                         </p>
                     </div>
                 </div>
