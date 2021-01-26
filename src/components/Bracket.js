@@ -99,7 +99,7 @@ export default class Bracket extends Component {
     componentWillUnmount() {
         if (this.state.socket) {
             this.state.socket.close();
-            console.log('SOCKETS DISCONNECT _____________________________________');
+            console.log('SOCKETS CLOSED (DISCONNECT) _____________________________________');
         }
     }
 
