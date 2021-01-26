@@ -92,6 +92,7 @@ export default class Bracket extends Component {
                 });
             }
         });
+        this.setState({ socket });
     }
     // componentWillUnmount() {
     //     if (this.state.socket) {
@@ -113,6 +114,7 @@ export default class Bracket extends Component {
                 } else {
                     this.setState({ error: true });
                 }
+                this.state.socket.emit('vote', this.state.key);
             })
             .catch((err) => {
                 this.setState({ error: true });
