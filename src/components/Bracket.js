@@ -32,7 +32,6 @@ export default class Bracket extends Component {
         } else {
             socket = this.state.socket;
         }
-
         this.setState({ loading: true });
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
@@ -99,7 +98,7 @@ export default class Bracket extends Component {
             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/vote`, votingCount)
             .then((res) => {
                 console.log(res);
-                if (res.data.vote.includes('updated')) {
+                if (res.data.msg.includes('updated')) {
                     this.setState({ voted: 'disabled' });
                 } else {
                     this.setState({ error: true });

@@ -5,11 +5,17 @@ const About = () => {
     return (
         <div>
             <div className="about-dev-parent">
-                <h1 className="title">About the Developers</h1>
-                <div className="hr"></div>
+                <h1 className="title" style={{
+                    margin: "20px auto",
+                    borderBottom: "black solid 1px",
+                    maxWidth: "50%"}}>About the Developers</h1>
+                <div className="hr">
+                    <p>Tier Breaker is a group collabrative effort by these three developers for General Assembly's Software Engineering Immersive bootcamp. The assignment was to create a fully functioning app with either Django, Flask, or Express backends, and it did require CRUD operations with some level of difficulty. This app was created using Flask, Socket.io, and React, with MongoDB </p> 
+                    <p>Thank you for stopping by and checkout out this application! Have fun!</p>
+                </div>
                 <div className="row">
                     <div className="dev-p">
-                        <p>Meet the team below.</p>
+                        <h1 className="meet-title">Meet the team below.</h1>
                     </div>
                 </div>
                 <div className="about">
