@@ -76,8 +76,8 @@ export default class Bracket extends Component {
             });
         console.log(socket);
         socket.emit('!!!', socket.id);
-        const setConnection = (id) => {
-            console.log('CONNECTED _________________________________', id);
+        const setConnection = () => {
+            console.log('CONNECTED _________________________________');
             this.setState({ connected: true });
         };
         socket.on('¡¡¡', setConnection);
@@ -113,11 +113,13 @@ export default class Bracket extends Component {
                     this.setState({ voted: 'disabled' });
                 } else {
                     this.setState({ error: true });
+                    console.log(res.data);
                 }
                 this.state.socket.emit('vote', this.statgite.key);
             })
             .catch((err) => {
                 this.setState({ error: true });
+                console.log(err);
             });
     };
 
