@@ -126,3 +126,9 @@ h1.logo-title {
         padding-right: 25px;
     }
 }
+
+@media (max-height: 950px) {
+    .instruction-box {
+        border: none;
+    }
+}
