@@ -156,8 +156,9 @@ export default class CreatePoll extends Component {
                         options={this.state.options}
                         handleSubmit={this.handleSubmit}
                     />
-                    {this.previousButton}
+                    <br></br>
                     {this.nextButton}
+                    {this.previousButton}
                 </form>
             </React.Fragment>
         );
