@@ -1,26 +1,54 @@
 .container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: flex-end;
-    border: rgb(78, 78, 78) 1px solid;
     border-radius: 10px;
     width: 100%;
-    height: 400px;
+    padding-top: 50px;
 }
 
 .voting {
-    font-size: 12px;
     border-radius: 15px;
-    height: 70px;
+    min-height: 100px;
     background-color: rgb(202, 202, 202);
-    width: 125px;
+    min-width: 125px;
     filter: drop-shadow(5px 4px 4px #cccccc);
     display: flex;
-    justify-content: space-around;
-    overflow: hidden;
+    justify-content: center;
+    align-content: center;
     margin: 10px;
 }
 
-hr {
-    margin: 20px 0px 20px 20px;
+.voting p {
+    height: 20px;
+}
+
+.level,
+.end-display {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+.end-display,
+.end-display p {
+    flex-direction: column;
+    font-size: 3rem;
+    align-content: center;
+}
+
+ol {
+    width: 50vh;
+    min-width: 400px;
+    margin: 0 auto;
+}
+ol li {
+    text-align: left;
+    padding-left: 10px;
+}
+
+ol span {
+    float: right;
+    color: #ee6e7293;
 }

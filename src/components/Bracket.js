@@ -47,7 +47,6 @@ export default class Bracket extends Component {
                         axios
                             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/tally`)
                             .then((response) => {
-                                console.log(response);
                                 this.setState({
                                     key: response.data.bracket.key,
                                     voting: response.data.bracket.voting_options.votes,
@@ -89,17 +88,13 @@ export default class Bracket extends Component {
         socket.on('vote_cast', (data) => {
             if (data.key === this.state.key) {
                 axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`).then((res) => {
-                    console.log(res);
                     this.setState({ voting: res.data.voting_options.votes });
                 });
             }
         });
     }
     componentWillUnmount() {
-        console.log('unmount');
-        console.log(this.state.socket);
         if (this.state.socket) {
-            console.log('disconnect socket');
             this.state.socket.disconnect();
         }
     }
@@ -112,7 +107,6 @@ export default class Bracket extends Component {
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/vote`, votingCount)
             .then((res) => {
-                console.log(res);
                 if (res.data.msg.includes('updated')) {
                     this.setState({ voted: 'disabled' });
                 } else {
@@ -129,12 +123,13 @@ export default class Bracket extends Component {
             return <p>LOADING...</p>;
         }
         let key = [];
-        if (!this.state.end_display) {
-            for (let i = 0; i < this.state.voting.length; i = i + 2) {
-                key.push([]);
+        if (this.state.end_display.length === 0) {
+            for (let i = 0; i < this.state.voting.length; i++) {
+                let level = [];
+                console.log(i, this.state.voting.length - 1);
                 if (i === this.state.voting.length - 1) {
                     for (let k of this.state.options) {
-                        key[i].push(
+                        level.push(
                             <div className="voting" key={k}>
                                 <p>
                                     {k}: {this.state.voting[i][k]}
@@ -152,38 +147,18 @@ export default class Bracket extends Component {
                     }
                 } else {
                     for (let k in this.state.voting[i]) {
-                        key[i].push(
+                        level.push(
                             <div className="voting" key={k}>
                                 <p>
                                     {k}: {this.state.voting[i][k]}
-                                    <br />
                                 </p>
                             </div>
                         );
                     }
                 }
+                key.unshift(<div className="level">{level}</div>);
             }
         }
-
-        // for (let k in this.state.voting) {
-        // key.push(
-        // <div className="voting" key={k}>
-        //     <p>
-        //         {k}: {this.state.voting[k]}
-        //         <br />
-        //         <button
-        //             className={`waves-effect waves-light btn ${this.state.voted}`}
-        //             onClick={(e) => {
-        //                 this.handleSubmit(e, k);
-        //             }}>
-        //             Vote
-        //         </button>
-        //     </p>
-        // </div>
-        // );
-        // }
-
-        console.log(this.state.end_display);
 
         const results = this.state.end_display.map((result, i) => {
             return (
@@ -193,8 +168,12 @@ export default class Bracket extends Component {
             );
         });
 
+        const tagLines = ['And the winners are... ', 'You have spoken!', 'This just in: ', 'Tournament Results'];
+        const ind = Math.floor(Math.random() * tagLines.length);
+
         const endDisp = (
             <div className="end-display">
+                <p>{tagLines[ind]}</p>
                 <ol>{results}</ol>
             </div>
         );
@@ -209,7 +188,7 @@ export default class Bracket extends Component {
         return (
             <div className="Vote">
                 <h2>{this.state.title}?</h2>
-                <div className="container">{this.state.end_display ? endDisp : key}</div>
+                <div className="container">{this.state.end_display.length > 0 ? endDisp : key}</div>
                 {this.state.voted ? <VoteSubmitted /> : null}
             </div>
         );
