@@ -19,3 +19,8 @@ h3 {
 .btn {
     background-color: #ee6e73;
 }
+
+.btn:hover,
+.btn:focus {
+    color: rgb(255, 165, 0);
+}
