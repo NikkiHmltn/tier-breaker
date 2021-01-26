@@ -12,8 +12,6 @@ h1.logo-title {
     min-height: 500px;
     margin: 0 auto;
     padding: 25px;
-    background-color: rgb(218, 218, 218);
-    filter: drop-shadow(5px 4px 9px #e2e2e2);
 }
 
 .instruction-box a {
