@@ -23,8 +23,10 @@ h3 {
 .btn:hover,
 .btn:focus {
     background-color: rgb(255, 165, 0);
+    cursor: pointer;
 }
 
 a:hover {
     color: rgb(255, 165, 0);
+    cursor: pointer;
 }

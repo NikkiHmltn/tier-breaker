@@ -2,26 +2,26 @@
     padding: 5px;
 }
 
-button {
-    background-color: rgb(255, 129, 129);
+button.clip {
     border: none;
     border-radius: 10px;
+    padding: 5px 0 5px 0;
 }
-
 
 hr {
     width: 700px;
     height: 1px;
     display: inline-flex;
     border: none;
-    background-color:rgb(255, 129, 129);
+    background-color: rgb(255, 129, 129);
 }
 
-h3 a, button:hover {
+h3 a {
     cursor: pointer;
 }
 
-h3 a, button {
+h3 a,
+button.clip {
     color: black;
 }
 
@@ -39,4 +39,4 @@ h3 a, button {
     background-color: rgb(218, 218, 218);
     filter: drop-shadow(5px 4px 9px #919191);
     border-radius: 10px;
-} 
+}
