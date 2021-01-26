@@ -113,7 +113,6 @@ export default class Bracket extends Component {
         if (this.state.end_display.length === 0) {
             for (let i = 0; i < this.state.voting.length; i++) {
                 let level = [];
-                console.log(i, this.state.voting.length - 1);
                 if (i === this.state.voting.length - 1) {
                     for (let k of this.state.options) {
                         level.push(
