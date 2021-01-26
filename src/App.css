@@ -21,7 +21,10 @@ h3 {
 }
 
 .btn:hover,
-.btn:focus,
-a:hover {
+.btn:focus {
     background-color: rgb(255, 165, 0);
+}
+
+a:hover {
+    color: rgb(255, 165, 0);
 }

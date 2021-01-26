@@ -84,7 +84,7 @@ export default class CreatePoll extends Component {
             options_list: this.state.list,
             num_options: num_options
         };
-        if (this.state.privet === 'on') newBracket.private = true;
+        if (this.state.private === 'on') newBracket.private = true;
         console.log(newBracket.private);
         axios
             .post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
