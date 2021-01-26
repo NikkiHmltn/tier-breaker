@@ -32,6 +32,7 @@
     display:flex;
     justify-content:space-evenly;
     filter: drop-shadow(5px 4px 9px #919191);
+    margin: 0 0 4rem 0;
 }
 
 .card-title-dev {
@@ -58,6 +59,19 @@
 
 .dev-p p{
     display: inline;
+}
+
+.hr {
+    width: 500px;
+    height: 200px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.meet-title {
+    margin: 6rem auto;
+    border-bottom: black solid 1px;
+    max-width: 60%;
 }
 
 @media (max-width: 700px) {

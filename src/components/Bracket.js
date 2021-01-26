@@ -74,32 +74,16 @@ export default class Bracket extends Component {
             .catch((err) => {
                 this.setState({ redirect: true, loading: false });
             });
-        console.log(socket);
-        socket.emit('!!!', socket.id);
-        const setConnection = () => {
-            console.log('CONNECTED _________________________________');
-            this.setState({ connected: true });
-        };
-        socket.on('¡¡¡', setConnection);
 
         socket.on('vote_cast', (data) => {
-            console.log('SOCKETS _____________________________________');
-            console.log('VOTE CAST _____________________________________');
             if (data.key === this.state.key) {
                 axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`).then((res) => {
                     this.setState({ voting: res.data.voting_options.votes });
-                    console.log('VOTE UPDATED _____________________________________');
                 });
             }
         });
         this.setState({ socket });
     }
-    // componentWillUnmount() {
-    //     if (this.state.socket) {
-    //         this.state.socket.close();
-    //         console.log('SOCKETS CLOSED (DISCONNECT) _____________________________________');
-    //     }
-    // }
 
     handleSubmit = (e, k) => {
         e.preventDefault();
@@ -113,13 +97,11 @@ export default class Bracket extends Component {
                     this.setState({ voted: 'disabled' });
                 } else {
                     this.setState({ error: true });
-                    console.log(res.data);
                 }
                 this.state.socket.emit('vote', this.state.key);
             })
             .catch((err) => {
                 this.setState({ error: true });
-                console.log(err);
             });
     };
 
