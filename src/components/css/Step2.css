@@ -19,4 +19,24 @@
 
 .pp {
    justify-content: center;
+   border:rgb(100, 20, 0) 1px solid;
 }
+
+.switch {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.brackets {
+    width: 100%;
+    text-align: center;
+}
+
+.brackets button {
+    display: inline-block;
+    margin: 0 auto;
+}
+
+input{
+    text-align:center;
+ }
