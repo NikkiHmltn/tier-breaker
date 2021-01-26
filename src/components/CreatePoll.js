@@ -52,7 +52,9 @@ export default class CreatePoll extends Component {
 
     handleChange(event) {
         const { name, value } = event.target;
+        console.log(name);
         if (name === 'private' && value === 'on') {
+            console.log('here');
             this.setState({ private: true });
         }
         if (name.includes('option-')) {
@@ -82,6 +84,7 @@ export default class CreatePoll extends Component {
             options_list: this.state.list,
             num_options: num_options
         };
+        if (this.state.privet === 'on') newBracket.private = true;
         console.log(newBracket.private);
         axios
             .post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
