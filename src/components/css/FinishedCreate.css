@@ -10,6 +10,7 @@ button.clip {
     display: flex;
     justify-content: center;
     align-content: center;
+    margin: 0 auto;
 }
 
 hr {
@@ -18,14 +19,14 @@ hr {
     display: inline-flex;
     border: none;
     background-color: rgb(255, 129, 129);
+    color: rgb(31, 30, 30);
 }
 
-h3 a {
+h3 a:hover {
     cursor: pointer;
 }
 
-h3 a,
-button.clip {
+h3 a {
     color: black;
 }
 
