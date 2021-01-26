@@ -86,9 +86,12 @@ export default class Bracket extends Component {
             });
 
         socket.on('vote_cast', (data) => {
+            console.log('SOCKETS _____________________________________');
+            console.log('VOTE CAST _____________________________________');
             if (data.key === this.state.key) {
                 axios.get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`).then((res) => {
                     this.setState({ voting: res.data.voting_options.votes });
+                    console.log('VOTE UPDATED _____________________________________');
                 });
             }
         });
