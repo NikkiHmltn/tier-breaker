@@ -7,7 +7,6 @@ import EnterCode from './components/EnterCode';
 import CreatePoll from './components/CreatePoll';
 import FinishedCreate from './components/FinishedCreate';
 import EditBracket from './components/EditBracket';
-import Vote from './components/Vote';
 import VoteSubmitted from './components/VoteSubmitted';
 import Welcome from './components/Welcome';
 import FourOFour from './components/FourOFour';
@@ -31,8 +30,7 @@ function App() {
                         return <Bracket history={history} location={location} />;
                     }}
                 />
-                <Route exact path="/editbracket" component={EditBracket} />
-                <Route exact path="/vote" component={Vote} />
+                <Route exact path="/editbracket/:key" component={EditBracket} />
                 <Route exact path="/votesubmitted" component={VoteSubmitted} />
                 <Route exact path="/about" component={About} />
                 <Route exact path="/public" component={Public} />

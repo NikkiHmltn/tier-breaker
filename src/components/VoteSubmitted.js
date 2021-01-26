@@ -1,9 +1,9 @@
 function VoteSubmitted() {
     return (
-      <div className="VoteSubmitted">
-        <h1>Thank you for submitting your votes!</h1>
-      </div>
+        <div className="VoteSubmitted">
+            <h2>Your vote has been submitted!</h2>
+        </div>
     );
-  }
-  
-  export default VoteSubmitted;
+}
+
+export default VoteSubmitted;
