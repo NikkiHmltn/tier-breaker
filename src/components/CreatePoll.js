@@ -52,11 +52,6 @@ export default class CreatePoll extends Component {
 
     handleChange(event) {
         const { name, value } = event.target;
-        console.log(name);
-        if (name === 'private' && value === 'on') {
-            console.log('here');
-            this.setState({ private: true });
-        }
         if (name.includes('option-')) {
             let index = parseInt(name.split('-')[1]);
             let list = this.state.list.slice(0, this.state.list.length);
@@ -70,6 +65,9 @@ export default class CreatePoll extends Component {
         this.setState({
             [name]: value
         });
+        if (name === 'private' && value === 'on') {
+            this.setState({ private: true });
+        }
     }
 
     // Trigger an alert on form submission
@@ -84,8 +82,6 @@ export default class CreatePoll extends Component {
             options_list: this.state.list,
             num_options: num_options
         };
-        if (this.state.private === 'on') newBracket.private = true;
-        console.log(newBracket.private);
         axios
             .post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
             .then((newBracket) => {

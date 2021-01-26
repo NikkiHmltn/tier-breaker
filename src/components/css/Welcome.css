@@ -18,6 +18,9 @@ h1.logo-title {
 .instruction-box a {
     color: #ee6e73;
 }
+.instruction-box a:hover {
+    color: rgb(255, 165, 0);
+}
 
 .words-box {
     display: inline-block;

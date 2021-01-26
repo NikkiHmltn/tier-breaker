@@ -36,7 +36,7 @@ function FinishedCreate(props) {
                 <div className="float-child">
                     <h5 className="pollkey">Poll Key:</h5>
                     <h3>{data.key}</h3>
-                    <button onClick={() => navigator.clipboard.writeText(`${data.key}`)}>
+                    <button className="btn" onClick={() => navigator.clipboard.writeText(`${data.key}`)}>
                         <i className="material-icons">
                             <span className="material-icons">content_paste</span>
                         </i>
@@ -50,7 +50,7 @@ function FinishedCreate(props) {
                             Edit
                         </a>
                     </h3>
-                    <button onClick={() => navigator.clipboard.writeText(`/editbracket/${data.key}`)}>
+                    <button className="btn" onClick={() => navigator.clipboard.writeText(`/editbracket/${data.key}`)}>
                         <i className="material-icons">
                             <span className="material-icons">content_paste</span>
                         </i>
@@ -64,7 +64,7 @@ function FinishedCreate(props) {
                             View
                         </a>
                     </h3>
-                    <button onClick={() => navigator.clipboard.writeText(`/bracket/${data.key}`)}>
+                    <button className="btn" onClick={() => navigator.clipboard.writeText(`/bracket/${data.key}`)}>
                         <i className="material-icons">
                             <span className="material-icons">content_paste</span>
                         </i>
