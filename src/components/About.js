@@ -10,8 +10,8 @@ const About = () => {
                     borderBottom: "black solid 1px",
                     maxWidth: "50%"}}>About the Developers</h1>
                 <div className="hr">
-                    <p>Tier Breaker is a collabrative effort by these three developers for General Assembly's Software Engineering Immersive bootcamp. The assignment was to create a fully functioning app with either Django, Flask, or Express backends, and it did require CRUD operations with some level of difficulty. This app was created using Flask, Socket.io, and React, with MongoDB </p> 
-                    <p>Thank you for stopping by and checkout out this application! Have fun!</p>
+                    <p>Tier Breaker is a collabrative project by the following three developers for General Assembly's Software Engineering Immersive. This app was created using Flask, Socket.io, and React, with MongoEngine and MongoAtlas.  In this one week endeavor, we took on the challenge of learning Flask from square one and rehashing socket knowledge from Javascript to Python to create a fully functioning web application.</p> 
+                    <p>Thank you for stopping by and checking out this application! Have fun!</p>
                 </div>
                 <div className="row">
                     <div className="dev-p">
