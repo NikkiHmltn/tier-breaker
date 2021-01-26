@@ -18,8 +18,7 @@ export default class Bracket extends Component {
             error: false,
             redirect: false,
             end_display: [],
-            voted: '',
-            connected: false
+            voted: ''
         };
     }
 
@@ -143,6 +142,7 @@ export default class Bracket extends Component {
                     }
                 }
                 key.unshift(<div className="level">{level}</div>);
+                console.log(key);
             }
         }
 
@@ -173,7 +173,6 @@ export default class Bracket extends Component {
 
         return (
             <div className="Vote">
-                {this.state.connected ? <p>CONNECTED</p> : <p>NOT CONNECTED</p>}
                 <h2>{this.state.title}?</h2>
                 <div className="container">{this.state.end_display.length > 0 ? endDisp : key}</div>
                 {this.state.voted ? <VoteSubmitted /> : null}

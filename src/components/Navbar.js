@@ -16,8 +16,8 @@ function Navbar() {
             <NavLink className="nav-link" to="/about">
                 About
             </NavLink>
-            <NavLink className="nav-link" to="/">
-                Welcome
+            <NavLink className="nav-link" to="/createpoll">
+                Create
             </NavLink>
         </nav>
     );

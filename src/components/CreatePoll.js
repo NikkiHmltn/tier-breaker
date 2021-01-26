@@ -58,7 +58,7 @@ export default class CreatePoll extends Component {
         if (name.includes('option-')) {
             let index = parseInt(name.split('-')[1]);
             let list = this.state.list.slice(0, this.state.list.length);
-            if (list.length === index) {
+            if (list.length >= index) {
                 list[index - 1] = value;
             } else {
                 list.push(value);
