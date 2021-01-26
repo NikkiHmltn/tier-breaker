@@ -23,15 +23,13 @@ export default class Bracket extends Component {
     }
 
     componentDidMount() {
-        const setCurrentSocket = (s) => {
-            this.setState({ socket: s });
-        };
         let socket = '';
-        if (!this.state.socket) {
+        if (!this.props.socket) {
             socket = io(process.env.REACT_APP_SERVER_URL);
             this.setState({ socket });
         } else {
-            socket = this.state.socket;
+            socket = this.props.socket;
+            this.setState({ socket: this.props.socket });
         }
 
         this.setState({ loading: true });
