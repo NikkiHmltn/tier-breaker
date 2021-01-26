@@ -1,6 +1,5 @@
 import './App.css';
 import { Switch, Route } from 'react-router-dom';
-import { useState } from 'react';
 import Navbar from './components/Navbar';
 import Bracket from './components/Bracket';
 import About from './components/About';
@@ -12,13 +11,8 @@ import VoteSubmitted from './components/VoteSubmitted';
 import Welcome from './components/Welcome';
 import FourOFour from './components/FourOFour';
 import Public from './components/Public';
-import io from 'socket.io-client';
 
 function App() {
-    const [socket, setSocket] = useState(false);
-
-    if (!socket) setSocket(io(process.env.REACT_APP_SERVER_URL));
-
     return (
         <div className="App">
             <div>
@@ -33,7 +27,7 @@ function App() {
                     exact
                     path="/bracket"
                     render={({ location, history }) => {
-                        return <Bracket history={history} location={location} socket={socket} />;
+                        return <Bracket history={history} location={location} />;
                     }}
                 />
                 <Route exact path="/editbracket/:key" component={EditBracket} />

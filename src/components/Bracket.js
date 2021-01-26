@@ -1,8 +1,8 @@
 import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
-import io from 'socket.io-client';
 import VoteSubmitted from './VoteSubmitted';
+import socket from './socket';
 import './css/Bracket.css';
 
 export default class Bracket extends Component {
@@ -18,20 +18,12 @@ export default class Bracket extends Component {
             error: false,
             redirect: false,
             end_display: [],
-            voted: ''
+            voted: '',
+            connected: false
         };
     }
 
     componentDidMount() {
-        let socket = '';
-        if (!this.props.socket) {
-            socket = io(process.env.REACT_APP_SERVER_URL);
-            this.setState({ socket });
-        } else {
-            socket = this.props.socket;
-            this.setState({ socket: this.props.socket });
-        }
-
         this.setState({ loading: true });
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
@@ -83,6 +75,13 @@ export default class Bracket extends Component {
                 this.setState({ redirect: true, loading: false });
             });
 
+        socket.emit('!!!');
+        const setConnection = () => {
+            console.log('CONNECTED _________________________________');
+            this.setState({ connected: true });
+        };
+        socket.on('¡¡¡', setConnection);
+
         socket.on('vote_cast', (data) => {
             console.log('SOCKETS _____________________________________');
             console.log('VOTE CAST _____________________________________');
@@ -94,12 +93,12 @@ export default class Bracket extends Component {
             }
         });
     }
-    componentWillUnmount() {
-        if (this.state.socket) {
-            this.state.socket.close();
-            console.log('SOCKETS CLOSED (DISCONNECT) _____________________________________');
-        }
-    }
+    // componentWillUnmount() {
+    //     if (this.state.socket) {
+    //         this.state.socket.close();
+    //         console.log('SOCKETS CLOSED (DISCONNECT) _____________________________________');
+    //     }
+    // }
 
     handleSubmit = (e, k) => {
         e.preventDefault();
@@ -189,6 +188,7 @@ export default class Bracket extends Component {
 
         return (
             <div className="Vote">
+                {this.state.connected ? <p>CONNECTED</p> : <p>NOT CONNECTED</p>}
                 <h2>{this.state.title}?</h2>
                 <div className="container">{this.state.end_display.length > 0 ? endDisp : key}</div>
                 {this.state.voted ? <VoteSubmitted /> : null}
