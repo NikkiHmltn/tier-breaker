@@ -115,7 +115,7 @@ export default class Bracket extends Component {
                     this.setState({ error: true });
                     console.log(res.data);
                 }
-                this.state.socket.emit('vote', this.statgite.key);
+                this.state.socket.emit('vote', this.state.key);
             })
             .catch((err) => {
                 this.setState({ error: true });
