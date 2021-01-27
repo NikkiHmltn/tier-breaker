@@ -30,7 +30,14 @@ function FinishedCreate(props) {
                 <h4>has been created.</h4>
             </div>
 
-            <hr></hr>
+          <div class="float-child">
+          <h5>Edit Link:</h5>
+          <h3><a href onClick={editLink}>Edit</a></h3>
+          <button onClick={() =>  navigator.clipboard.writeText(`/editbracket/${data.key}`)}>
+            <i className="material-icons"><span class="material-icons">content_paste</span></i>
+            </button>
+          </div>
+
 
             <div className="float-container">
                 <div className="float-child">
@@ -43,21 +50,14 @@ function FinishedCreate(props) {
                     </button>
                 </div>
 
-                <div className="float-child">
-                    <h5>Edit Link:</h5>
-                    <h3>
-                        <a href onClick={editLink}>
-                            Edit
-                        </a>
-                    </h3>
-                    <button
-                        className="btn clip"
-                        onClick={() => navigator.clipboard.writeText(`/editbracket/${data.key}`)}>
-                        <i className="material-icons">
-                            <span className="material-icons">content_paste</span>
-                        </i>
-                    </button>
-                </div>
+          <div class="float-child">
+          <h5>View Bracket Link:</h5>
+          <h3><a href onClick={viewLink}>View</a></h3>
+          <button onClick={() =>  navigator.clipboard.writeText(`/bracket/${data.key}`)}>
+            <i className="material-icons"><span class="material-icons">content_paste</span></i>
+            </button>
+          </div>
+
 
                 <div className="float-child">
                     <h5>View Bracket Link:</h5>

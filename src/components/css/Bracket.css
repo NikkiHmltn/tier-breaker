@@ -1,20 +1,22 @@
 .container {
-    display: flex;
+    display: inline-flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-end;
     border-radius: 10px;
     width: 100%;
+    height: 700px;
     padding-top: 50px;
+    border: orangered solid 1px;
 }
 
 .voting {
     border-radius: 15px;
     min-height: 100px;
-    background-color: rgb(202, 202, 202);
+    background-color: rgb(226, 226, 226);
     min-width: 125px;
     filter: drop-shadow(5px 4px 4px #cccccc);
-    display: flex;
+    display: inline-block;
     justify-content: center;
     align-content: center;
     margin: 10px;
@@ -22,11 +24,12 @@
 
 .voting p {
     height: 20px;
+    padding: 5px;
 }
 
 .level,
 .end-display {
-    display: flex;
+    /* display: flex; */
     width: 100%;
     justify-content: center;
 }
@@ -51,4 +54,9 @@ ol li {
 ol span {
     float: right;
     color: #ee6e7293;
+}
+
+button {
+    padding-bottom:10px;
+    margin-top:5px;
 }
