@@ -36,6 +36,7 @@ export default class Bracket extends Component {
                         axios
                             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/tally`)
                             .then((response) => {
+                                console.log(response.data);
                                 this.setState({
                                     key: response.data.bracket.key,
                                     voting: response.data.bracket.voting_options.votes,
@@ -56,6 +57,7 @@ export default class Bracket extends Component {
                                 this.setState({ redirect: true, loading: false });
                             });
                     } else {
+                        console.log(res.data);
                         this.setState({
                             key: res.data.key,
                             voting: res.data.voting_options.votes,
