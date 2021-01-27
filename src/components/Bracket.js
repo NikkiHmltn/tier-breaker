@@ -56,7 +56,6 @@ export default class Bracket extends Component {
                                 this.setState({ redirect: true, loading: false });
                             });
                     } else {
-                        console.log(res.data);
                         this.setState({
                             key: res.data.key,
                             voting: res.data.voting_options.votes,
@@ -146,7 +145,6 @@ export default class Bracket extends Component {
                     }
                 }
                 key.unshift(<div className="level">{level}</div>);
-                console.log(key);
             }
         }
 
