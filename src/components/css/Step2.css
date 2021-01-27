@@ -18,8 +18,8 @@
 }
 
 .pp {
-   justify-content: center;
-   border:rgb(100, 20, 0) 1px solid;
+    justify-content: center;
+    border: rgb(100, 20, 0) 1px solid;
 }
 
 .switch {
@@ -37,6 +37,10 @@
     margin: 0 auto;
 }
 
-input{
-    text-align:center;
- }
+input {
+    text-align: center;
+}
+
+.switch label input[type='checkbox']:checked + .lever:after {
+    background-color: #ee6e73;
+}

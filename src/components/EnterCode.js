@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import './css/EnterCode.css';
+
 function EnterCode() {
     const [pollKey, setPollKey] = useState('');
     // const [bracket, setBracket] = useState('')

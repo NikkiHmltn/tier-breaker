@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 
 function Filter(props) {
-    const [hidden, setHidden] = useState('hidden');
+    const [hidden, setHidden] = useState('hide');
 
     const handleClick = () => {
-        if (hidden === 'hidden') {
+        if (hidden === 'hidden' || hidden === 'hide') {
             setHidden('shown');
         } else {
             setHidden('hidden');

@@ -1,4 +1,3 @@
-
 # Tier Breaker (Frontend Repository)
 
 The back end repo can be found at [github.com/sschneeberg/tierbreaker_backend](https://github.com/sschneeberg/tierbreaker_backend)
@@ -6,7 +5,7 @@ The back end repo can be found at [github.com/sschneeberg/tierbreaker_backend](h
 This is a React App created to connect with a Flask API using MongoDB.
 
 Tier Breaker is hassle-free tournament creation. No signups required, no passwords to keep track of.
-To access the live site, visit [tierbreaker.herokuapp.com](https://tierbreaker.herokuapp.com).
+To access the live site, visit [tier-breaker.herokuapp.com](https://tier-breaker.herokuapp.com).
 
 # Installation
 
@@ -18,7 +17,7 @@ To access the live site, visit [tierbreaker.herokuapp.com](https://tierbreaker.h
 
 # Site Flow
 
-Our landing page offers instructions for site use and directs the visitor to either create or vote by entering a code.  To view any public polls, `Vote Public` will direct you to a view page for polls by date.
+Our landing page offers instructions for site use and directs the visitor to either create or vote by entering a code. To view any public polls, `Vote Public` will direct you to a view page for polls by date.
 
 ![welcome page]()
 
@@ -28,12 +27,10 @@ Creating the poll is a multiform that leads you through the logistic set up befo
 
 ![Create poll]()
 
-The show page for a bracket can be found by clicking through the public page or entering a code (for either public or private tournaments).  If the tournament is closed, the results are displayed in the format chosen by the creator.  If not, the user can vote.  Voting updates are handled through sockets, so live changes will be reflected on the screen.
+The show page for a bracket can be found by clicking through the public page or entering a code (for either public or private tournaments). If the tournament is closed, the results are displayed in the format chosen by the creator. If not, the user can vote. Voting updates are handled through sockets, so live changes will be reflected on the screen.
 
 ![display bracket]()
 
 A poll creator is given a special link that allows them to edit the title or question for their tournament or change its privacy setting.
 
 ![Edit bracket]()
-
-

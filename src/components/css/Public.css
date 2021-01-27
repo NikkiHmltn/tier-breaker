@@ -15,10 +15,6 @@
     padding: 20px;
 }
 
-.bracket-card p.vote-view {
-    color: white;
-}
-
 .bracket-card h3 {
     margin: 0;
 }
@@ -30,6 +26,13 @@
 
 .bracket-card:hover {
     background-color: #ee6e7293;
+    color: black;
+}
+
+.bracket-card p.vote-view,
+.bracket-card p.vote-view:hover,
+.bracket-card:hover .bracket-card p.vote-view {
+    color: white;
 }
 
 .Filter-bubble {

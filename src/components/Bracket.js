@@ -1,8 +1,8 @@
 import { Redirect } from 'react-router-dom';
 import React, { Component } from 'react';
 import axios from 'axios';
-import io from 'socket.io-client';
 import VoteSubmitted from './VoteSubmitted';
+import socket from './socket';
 import './css/Bracket.css';
 
 export default class Bracket extends Component {
@@ -23,16 +23,6 @@ export default class Bracket extends Component {
     }
 
     componentDidMount() {
-        const setCurrentSocket = (s) => {
-            this.setState({ socket: s });
-        };
-        let socket = '';
-        if (!this.state.socket) {
-            socket = io(process.env.REACT_APP_SERVER_URL);
-            this.setState({ socket });
-        } else {
-            socket = this.state.socket;
-        }
         this.setState({ loading: true });
         axios
             .get(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}`)
@@ -61,7 +51,10 @@ export default class Bracket extends Component {
                                             response.data.bracket.end_display.top_three
                                     });
                             })
-                            .catch((err) => this.setState({ redirect: true, loading: false }));
+                            .catch((err) => {
+                                console.log(err);
+                                this.setState({ redirect: true, loading: false });
+                            });
                     } else {
                         this.setState({
                             key: res.data.key,
@@ -71,16 +64,16 @@ export default class Bracket extends Component {
                             title: res.data.title
                         });
                         if (res.data.end_display)
-                            this.setState({
-                                end_display:
-                                    res.data.end_display.full_bracket ||
-                                    res.data.end_display.top_three ||
-                                    res.data.end_display.winner
-                            });
+                            for (let k in res.data.end_display) {
+                                if (res.data.end_display[k].length > 0) {
+                                    this.setState({ end_display: res.data.end_display[k] });
+                                }
+                            }
                     }
                 }
             })
             .catch((err) => {
+                console.log(err);
                 this.setState({ redirect: true, loading: false });
             });
 
@@ -91,11 +84,7 @@ export default class Bracket extends Component {
                 });
             }
         });
-    }
-    componentWillUnmount() {
-        if (this.state.socket) {
-            this.state.socket.disconnect();
-        }
+        this.setState({ socket });
     }
 
     handleSubmit = (e, k) => {
@@ -111,6 +100,7 @@ export default class Bracket extends Component {
                 } else {
                     this.setState({ error: true });
                 }
+                this.state.socket.emit('vote', this.state.key);
             })
             .catch((err) => {
                 this.setState({ error: true });
@@ -125,7 +115,6 @@ export default class Bracket extends Component {
         if (this.state.end_display.length === 0) {
             for (let i = 0; i < this.state.voting.length; i++) {
                 let level = [];
-                console.log(i, this.state.voting.length - 1);
                 if (i === this.state.voting.length - 1) {
                     for (let k of this.state.options) {
                         level.push(

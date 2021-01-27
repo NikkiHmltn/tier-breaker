@@ -5,14 +5,20 @@ h1.logo-title {
 
 .instruction-box {
     display: flex;
-    justify-content: space-between;
-    border: rgb(0, 0, 0) 1px solid;
+    justify-content: center;
     border-radius: 15px;
     width: 80vw;
     height: 60vh;
     min-height: 500px;
     margin: 0 auto;
     padding: 25px;
+}
+
+.instruction-box a {
+    color: #ee6e73;
+}
+.instruction-box a:hover {
+    color: rgb(255, 165, 0);
 }
 
 .words-box {
@@ -57,7 +63,7 @@ h1.logo-title {
         margin: 0 auto;
         padding: 25px;
     }
-    
+
     .words-box {
         display: inline-block;
         width: 70vw;
@@ -98,7 +104,7 @@ h1.logo-title {
         margin: 0 auto;
         padding: 25px;
     }
-    
+
     .words-box {
         display: inline-block;
         width: 70vw;
@@ -121,6 +127,10 @@ h1.logo-title {
         padding: 15px;
         padding-right: 25px;
     }
-
 }
 
+@media (max-height: 950px) {
+    .instruction-box {
+        border: none;
+    }
+}

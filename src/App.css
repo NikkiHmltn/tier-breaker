@@ -19,3 +19,14 @@ h3 {
 .btn {
     background-color: #ee6e73;
 }
+
+.btn:hover,
+.btn:focus {
+    background-color: rgb(255, 165, 0);
+    cursor: pointer;
+}
+
+a:hover {
+    color: rgb(255, 165, 0);
+    cursor: pointer;
+}
