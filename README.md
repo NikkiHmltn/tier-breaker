@@ -19,18 +19,18 @@ To access the live site, visit [tier-breaker.herokuapp.com](https://tier-breaker
 
 Our landing page offers instructions for site use and directs the visitor to either create or vote by entering a code. To view any public polls, `Vote Public` will direct you to a view page for polls by date.
 
-![welcome page]()
+![welcome page](https://i.imgur.com/vUAeTcn.png)
 
-![Vote Public]()
+![Vote Public](https://i.imgur.com/rEFWfUi.png)
 
 Creating the poll is a multiform that leads you through the logistic set up before asking for the tournament matchups.
 
-![Create poll]()
+![Create poll](https://i.imgur.com/htCfjza.png)
 
 The show page for a bracket can be found by clicking through the public page or entering a code (for either public or private tournaments). If the tournament is closed, the results are displayed in the format chosen by the creator. If not, the user can vote. Voting updates are handled through sockets, so live changes will be reflected on the screen.
 
-![display bracket]()
+![display bracket](https://i.imgur.com/vgYNigl.png)
 
 A poll creator is given a special link that allows them to edit the title or question for their tournament or change its privacy setting.
 
-![Edit bracket]()
+![Edit bracket](https://i.imgur.com/AWuwzog.png)
