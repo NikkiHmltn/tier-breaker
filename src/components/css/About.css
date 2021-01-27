@@ -109,6 +109,13 @@
     color: white;
 }
 
+@media (max-width: 800px) {
+    .bot-about {
+        flex-direction: column;
+        align-content: center;
+    }
+}
+
 @media (max-width: 700px) {
     .about {
         display: flex;
