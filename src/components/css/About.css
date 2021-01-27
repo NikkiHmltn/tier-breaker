@@ -19,9 +19,10 @@
 }
 
 .row-dev {
-    width: 1300px;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
+    margin: 0 auto;
 }
 
 .card3 {
@@ -71,22 +72,28 @@
 
 .bot-about {
     display: flex;
-    justify-content: space-evenly;
-    width: 75%;
+    justify-content: space-between;
+    align-content: center;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .bot-img {
     max-height: 100%;
-    max-width: 200px;
-    background-color: #e2e2e2;
-    border-radius: 1px lightgrey solid;
     margin: 15px;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.bot-img img {
+    width: 400px;
+    object-fit: scale-down;
 }
 
 .bot-desc {
-    width: 500px;
+    max-width: 500px;
     padding: 10px;
-    margin: 0px auto;
 }
 
 .meet-title,
@@ -115,6 +122,7 @@
     .bot-about {
         flex-direction: column;
         align-content: center;
+        justify-content: center;
     }
 }
 
@@ -126,9 +134,9 @@
         margin-left: 10em;
     }
     .row-dev {
-        width: 1300px;
         display: flex;
         flex-direction: column;
+        justify-content: center;
     }
 
     .card3 {
