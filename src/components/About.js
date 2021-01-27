@@ -6,7 +6,7 @@ const About = () => {
         <div>
             <div className="bot-about">
                 <h1 className="about-title"> Using the Discord Bot</h1>
-                <div className="hr">
+                <div className="bot-desc">
                     <p>
                         Poll-Bot, our discord bot, is available for anyone who wants to use it. If you are an admin on
                         your discord server, log in to discord and then copy the url below into your browser.
@@ -23,7 +23,6 @@ const About = () => {
                     </div>
                 </div>
             </div>
-            <hr className="about-break" />
             <div className="about-dev-parent">
                 <h1 className="about-title"> About the Developers</h1>
                 <div className="hr">

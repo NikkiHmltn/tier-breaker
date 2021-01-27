@@ -69,27 +69,28 @@
     margin: 0px auto;
 }
 
-.meet-title {
+.bot-desc {
+    width: 500px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.meet-title,
+.about-title {
     margin: 6rem auto;
     border-bottom: black solid 1px;
     max-width: 60%;
 }
 
 .bot-link {
-    background-color: ee6e7293;
+    background-color: #ee6e7293;
     border-radius: 15px;
     filter: drop-shadow(5px 4px 9px #919191);
     padding: 10px;
 }
 
-.about-title {
-    margin: '20px auto';
-    border-bottom: 'black solid 1px';
-    max-width: '50%';
-}
-
-hr.about-break {
-    margin: 20px;
+.bot-link code {
+    color: white;
 }
 
 @media (max-width: 700px) {
