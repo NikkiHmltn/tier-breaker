@@ -29,26 +29,25 @@ function FinishedCreate(props) {
                 <h2>{data.title}</h2>
                 <h4>has been created.</h4>
             </div>
-
-            <div className="float-child">
-                <h5>Edit Link:</h5>
-                <h3>
-                    <a href onClick={editLink}>
-                        Edit
-                    </a>
-                </h3>
-                <button
-                    className="btn clip"
-                    onClick={() =>
-                        navigator.clipboard.writeText(`http://tier-breaker.herokuapp.com/editbracket/${data.key}`)
-                    }>
-                    <i className="material-icons">
-                        <span className="material-icons">content_paste</span>
-                    </i>
-                </button>
-            </div>
-
             <div className="float-container">
+                <div className="float-child">
+                    <h5>Edit Link:</h5>
+                    <h3>
+                        <a href onClick={editLink}>
+                            Edit
+                        </a>
+                    </h3>
+                    <button
+                        className="btn clip"
+                        onClick={() =>
+                            navigator.clipboard.writeText(`http://tier-breaker.herokuapp.com/editbracket/${data.key}`)
+                        }>
+                        <i className="material-icons">
+                            <span className="material-icons">content_paste</span>
+                        </i>
+                    </button>
+                </div>
+
                 <div className="float-child">
                     <h5 className="pollkey">Poll Key:</h5>
                     <h3>{data.key}</h3>
