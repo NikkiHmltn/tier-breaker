@@ -46,7 +46,7 @@ function FinishedCreate(props) {
 
           <div class="float-child">
           <h5>Edit Link:</h5>
-          <h3><a onClick={editLink}>Edit</a></h3>
+          <h3><a href onClick={editLink}>Edit</a></h3>
           <button onClick={() =>  navigator.clipboard.writeText(`/editbracket/${data.key}`)}>
             <i className="material-icons"><span class="material-icons">content_paste</span></i>
             </button>
@@ -55,7 +55,7 @@ function FinishedCreate(props) {
 
           <div class="float-child">
           <h5>View Bracket Link:</h5>
-          <h3><a onClick={viewLink}>View</a></h3>
+          <h3><a href onClick={viewLink}>View</a></h3>
           <button onClick={() =>  navigator.clipboard.writeText(`/bracket/${data.key}`)}>
             <i className="material-icons"><span class="material-icons">content_paste</span></i>
             </button>
