@@ -51,8 +51,12 @@ export default class Bracket extends Component {
                                             response.data.bracket.end_display.top_three
                                     });
                             })
-                            .catch((err) => this.setState({ redirect: true, loading: false }));
+                            .catch((err) => {
+                                console.log(err);
+                                this.setState({ redirect: true, loading: false });
+                            });
                     } else {
+                        console.log(res.data);
                         this.setState({
                             key: res.data.key,
                             voting: res.data.voting_options.votes,
@@ -71,6 +75,7 @@ export default class Bracket extends Component {
                 }
             })
             .catch((err) => {
+                console.log(err);
                 this.setState({ redirect: true, loading: false });
             });
 
