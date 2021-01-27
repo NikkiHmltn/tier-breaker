@@ -5,10 +5,7 @@ const About = () => {
     return (
         <div>
             <div className="bot-about">
-                <h1
-                    className="about-title"
-                    Using the Discord Bot
-                </h1>
+                <h1>className="about-title" Using the Discord Bot</h1>
                 <div className="hr">
                     <p>
                         Poll-Bot, our discord bot, is available for anyone who wants to use it. If you are an admin on
@@ -25,10 +22,7 @@ const About = () => {
                 </div>
             </div>
             <div className="about-dev-parent">
-                <h1
-                    className="about-title"
-                    About the Developers
-                </h1>
+                <h1>className="about-title" About the Developers</h1>
                 <div className="hr">
                     <p>
                         Tier Breaker is a collabrative project by the following three developers for General Assembly's
