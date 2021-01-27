@@ -5,24 +5,27 @@ const About = () => {
     return (
         <div>
             <div className="bot-about">
-                <h1>className="about-title" Using the Discord Bot</h1>
+                <h1 className="about-title"> Using the Discord Bot</h1>
                 <div className="hr">
                     <p>
                         Poll-Bot, our discord bot, is available for anyone who wants to use it. If you are an admin on
                         your discord server, log in to discord and then copy the url below into your browser.
                         Interacting with Poll-Bot is easy, a server member just needs to type in{' '}
                         <span style={{ color: '#ee6e73' }}>
-                            <em>!poll</em> and the key for your poll.
+                            <strong>!poll</strong> and the key for your poll.
                         </span>{' '}
                         Poll-Bot will respond with the question and available options, mapped to emoji reacts. The
                         server has a minute to react to their option(s) of choice. Poll-Bot will send a reminder when
                         the voting window is about to close.
                     </p>
-                    <code className="bot-link">this is a link place holder</code>
+                    <div className="bot-link">
+                        <code>this is a link place holder</code>
+                    </div>
                 </div>
             </div>
+            <hr className="about-break" />
             <div className="about-dev-parent">
-                <h1>className="about-title" About the Developers</h1>
+                <h1 className="about-title"> About the Developers</h1>
                 <div className="hr">
                     <p>
                         Tier Breaker is a collabrative project by the following three developers for General Assembly's
