@@ -17,7 +17,7 @@ function FinishedCreate(props) {
     const editLink = (e) => {
         e.preventDefault();
         history.push({
-            pathname: `editbracket/`,
+            pathname: `editbracket/:key`,
             state: { key: data.key }
         });
     };
