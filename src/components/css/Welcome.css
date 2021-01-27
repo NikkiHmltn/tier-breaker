@@ -16,6 +16,13 @@ h1.logo-title {
     padding: 25px;
 }
 
+.instruction-box a {
+    color: #ee6e73;
+}
+.instruction-box a:hover {
+    color: rgb(255, 165, 0);
+}
+
 .words-box {
     display: inline-block;
     border-radius: 15px;
@@ -59,7 +66,7 @@ h1.logo-title {
         margin: 0 auto;
         padding: 25px;
     }
-    
+
     .words-box {
         display: inline-block;
         width: 70vw;
@@ -100,7 +107,7 @@ h1.logo-title {
         margin: 0 auto;
         padding: 25px;
     }
-    
+
     .words-box {
         display: inline-block;
         width: 70vw;
@@ -123,6 +130,10 @@ h1.logo-title {
         padding: 15px;
         padding-right: 25px;
     }
-
 }
 
+@media (max-height: 950px) {
+    .instruction-box {
+        border: none;
+    }
+}

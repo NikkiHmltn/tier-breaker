@@ -70,7 +70,6 @@ export default class EditBracket extends Component {
         axios
             .put(`${process.env.REACT_APP_SERVER_URL}/bracket/${this.state.key}/edit`, newBracket)
             .then((newBracket) => {
-                console.log(newBracket);
                 if (newBracket.status === 200) {
                     this.setState({ successRedirect: true, loading: false });
                 } else {
@@ -149,13 +148,17 @@ export default class EditBracket extends Component {
                         value={this.state.title}
                         onChange={this.handleChange}
                     />
-                    <a class="waves-effect waves-light btn pink" style={{ margin: '10px' }} onClick={this.handleSubmit}>
+                    <button
+                        type="button"
+                        className="waves-effect waves-light btn "
+                        style={{ margin: '10px' }}
+                        onClick={this.handleSubmit}>
                         Submit
-                    </a>
+                    </button>
 
-                    <a class="waves-effect waves-light btn pink" onClick={this.handleDelete}>
+                    <button type="button" className="waves-effect waves-light btn" onClick={this.handleDelete}>
                         DELETE
-                    </a>
+                    </button>
                 </form>
             </div>
         );

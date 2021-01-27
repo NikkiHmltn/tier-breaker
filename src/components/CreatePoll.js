@@ -52,13 +52,10 @@ export default class CreatePoll extends Component {
 
     handleChange(event) {
         const { name, value } = event.target;
-        if (name === 'private' && value === 'on') {
-            this.setState({ private: true });
-        }
         if (name.includes('option-')) {
             let index = parseInt(name.split('-')[1]);
             let list = this.state.list.slice(0, this.state.list.length);
-            if (list.length === index) {
+            if (list.length >= index) {
                 list[index - 1] = value;
             } else {
                 list.push(value);
@@ -68,6 +65,9 @@ export default class CreatePoll extends Component {
         this.setState({
             [name]: value
         });
+        if (name === 'private' && value === 'on') {
+            this.setState({ private: true });
+        }
     }
 
     // Trigger an alert on form submission
@@ -85,8 +85,7 @@ export default class CreatePoll extends Component {
         axios
             .post(`${process.env.REACT_APP_SERVER_URL}/bracket/create`, newBracket)
             .then((newBracket) => {
-                console.log(newBracket.data);
-                this.setState({data: newBracket.data})
+                this.setState({ data: newBracket.data });
                 if (!newBracket.data.msg.includes('created')) {
                     this.setState({ error: true, loading: false });
                 } else {
@@ -102,9 +101,9 @@ export default class CreatePoll extends Component {
         let currentStep = this.state.currentStep;
         if (currentStep !== 1) {
             return (
-                <a className="waves-effect waves-light btn " onClick={this._prev}>
+                <button type="button" className="waves-effect waves-light btn " onClick={this._prev}>
                     Previous
-                </a>
+                </button>
             );
         }
         return null;
@@ -114,9 +113,9 @@ export default class CreatePoll extends Component {
         let currentStep = this.state.currentStep;
         if (currentStep < 2) {
             return (
-                <a className="waves-effect waves-light btn " onClick={this._next}>
+                <button type="button" className="waves-effect waves-light btn " onClick={this._next}>
                     Next
-                </a>
+                </button>
             );
         }
 
@@ -125,14 +124,14 @@ export default class CreatePoll extends Component {
     render() {
         M.AutoInit();
         if (this.state.redirect === true) {
-            return(	
-                <Redirect	
-                  to={{	
-                  pathname: '/finishedcreate',	
-                  state: this.state.data	
-                }}	
-              />	
-                )
+            return (
+                <Redirect
+                    to={{
+                        pathname: '/finishedcreate',
+                        state: this.state.data
+                    }}
+                />
+            );
         }
         if (this.state.error) {
             return <div style={{ color: 'red' }}>AND ERROR HAS OCCURED. PLEASE TRY AGAIN OR CONTACT SUPPORT.</div>;
@@ -164,4 +163,3 @@ export default class CreatePoll extends Component {
         );
     }
 }
-

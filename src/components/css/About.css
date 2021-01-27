@@ -13,15 +13,15 @@
     font-size: 10px;
 }
 
-.about{
-    display:flex;
-    justify-content:space-evenly;
+.about {
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .row-dev {
     width: 1300px;
-    display:flex;
-    justify-content:space-evenly;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .card3 {
@@ -29,47 +29,103 @@
     border-radius: 15px;
     background-color: rgb(224, 224, 224);
     padding: 10px;
-    display:flex;
-    justify-content:space-evenly;
+    display: flex;
+    justify-content: space-evenly;
     filter: drop-shadow(5px 4px 9px #919191);
+    margin: 0 0 4rem 0;
 }
 
 .card-title-dev {
     color: rgb(224, 84, 84);
     font-size: 23px;
-    display:flex;
+    display: flex;
     margin-top: -5px;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
 }
 
 .desc {
     font-size: 10px;
-    opacity: .75;
+    opacity: 0.75;
     margin-top: -9px;
-    justify-content:space-evenly;
+    justify-content: space-evenly;
 }
 
-.github-img, .linkedin-img {
+.github-img,
+.linkedin-img {
     margin-top: 4px;
     margin-left: -6px;
-    justify-self:space-evenly;
+    justify-self: space-evenly;
     width: 31px;
 }
 
-.dev-p p{
+.dev-p p {
     display: inline;
 }
 
+.hr {
+    width: 500px;
+    height: 200px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.bot-about {
+    display: flex;
+    justify-content: space-evenly;
+    width: 75%;
+}
+
+.bot-img {
+    height: 100%;
+    background-color: #e2e2e2;
+    border-radius: 1px lightgrey solid;
+}
+
+.bot-desc {
+    width: 500px;
+    padding: 10px;
+    margin: 0px auto;
+}
+
+.meet-title,
+.about-title {
+    margin: 6rem auto;
+    border-bottom: black solid 1px;
+    max-width: 60%;
+}
+
+.about-title {
+    margin-bottom: 2rem;
+}
+
+.bot-link {
+    background-color: #ee6e7293;
+    border-radius: 15px;
+    filter: drop-shadow(5px 4px 9px #919191);
+    padding: 10px;
+}
+
+.bot-link code {
+    color: white;
+}
+
+@media (max-width: 800px) {
+    .bot-about {
+        flex-direction: column;
+        align-content: center;
+    }
+}
+
 @media (max-width: 700px) {
-    .about{
-        display:flex;
+    .about {
+        display: flex;
         flex-direction: column;
         flex-wrap: wrap;
         margin-left: 10em;
     }
     .row-dev {
         width: 1300px;
-        display:flex;
+        display: flex;
         flex-direction: column;
     }
 
@@ -78,8 +134,8 @@
         border-radius: 15px;
         background-color: rgb(224, 224, 224);
         padding: 10px;
-        display:flex;
-        justify-content:space-evenly;
+        display: flex;
+        justify-content: space-evenly;
         filter: drop-shadow(5px 4px 9px #919191);
         margin: 20px 0 20px 0;
     }
