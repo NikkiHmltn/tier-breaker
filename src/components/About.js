@@ -1,4 +1,5 @@
 import React from 'react';
+import PollBot from './PollBot.png';
 import './css/About.css';
 
 const About = () => {
@@ -19,12 +20,11 @@ const About = () => {
                         the voting window is about to close.
                     </p>
                     <div className="bot-link">
-                        <code>this is a link place holder</code>
+                        <code>https://discord.com/oauth2/authorize?client_id=803448758447898626{'&'}scope=bot</code>
                     </div>
                 </div>
                 <div className="bot-img">
-                    <p>Image placeholder</p>
-                    <img alt="Pol-Bot" />
+                    <img alt="Pol-Bot" src={PollBot} />
                 </div>
             </div>
             <div className="about-dev-parent">
