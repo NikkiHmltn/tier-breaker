@@ -4,8 +4,8 @@ import './css/About.css';
 const About = () => {
     return (
         <div>
+            <h1 className="about-title"> Using the Discord Bot</h1>
             <div className="bot-about">
-                <h1 className="about-title"> Using the Discord Bot</h1>
                 <div className="bot-desc">
                     <p>
                         Poll-Bot, our discord bot, is available for anyone who wants to use it. If you are an admin on
@@ -21,6 +21,10 @@ const About = () => {
                     <div className="bot-link">
                         <code>this is a link place holder</code>
                     </div>
+                </div>
+                <div className="bot-img">
+                    <p>Image placeholder</p>
+                    <img alt="Pol-Bot" />
                 </div>
             </div>
             <div className="about-dev-parent">

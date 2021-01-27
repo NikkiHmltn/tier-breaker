@@ -69,6 +69,18 @@
     margin: 0px auto;
 }
 
+.bot-about {
+    display: flex;
+    justify-content: space-evenly;
+    width: 75%;
+}
+
+.bot-img {
+    height: 100%;
+    background-color: #e2e2e2;
+    border-radius: 1px lightgrey solid;
+}
+
 .bot-desc {
     width: 500px;
     padding: 10px;
@@ -80,6 +92,10 @@
     margin: 6rem auto;
     border-bottom: black solid 1px;
     max-width: 60%;
+}
+
+.about-title {
+    margin-bottom: 2rem;
 }
 
 .bot-link {
