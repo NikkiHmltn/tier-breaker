@@ -65,12 +65,11 @@ export default class Bracket extends Component {
                             title: res.data.title
                         });
                         if (res.data.end_display)
-                            this.setState({
-                                end_display:
-                                    res.data.end_display.full_bracket ||
-                                    res.data.end_display.top_three ||
-                                    res.data.end_display.winner
-                            });
+                            for (let k in res.data.end_display) {
+                                if (res.data.end_display[k].length > 0) {
+                                    this.setState({ end_display: res.data.end_display[k] });
+                                }
+                            }
                     }
                 }
             })
