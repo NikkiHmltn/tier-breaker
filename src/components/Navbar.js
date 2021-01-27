@@ -5,7 +5,7 @@ function Navbar() {
     return (
         <nav className="navbar">
             <Link className="nav-logo" to="/">
-                TIER BREAKER LOGO
+                <img src="https://i.imgur.com/dRaxLPZ.png" alt="thelogo" />
             </Link>
             <NavLink className="nav-link" exact to="/entercode">
                 Enter Code
