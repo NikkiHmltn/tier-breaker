@@ -37,7 +37,11 @@ function FinishedCreate(props) {
                         Edit
                     </a>
                 </h3>
-                <button className="btn clip" onClick={() => navigator.clipboard.writeText(`/editbracket/${data.key}`)}>
+                <button
+                    className="btn clip"
+                    onClick={() =>
+                        navigator.clipboard.writeText(`http://tier-breaker.herokuapp.com/editbracket/${data.key}`)
+                    }>
                     <i className="material-icons">
                         <span className="material-icons">content_paste</span>
                     </i>
@@ -62,7 +66,11 @@ function FinishedCreate(props) {
                             View
                         </a>
                     </h3>
-                    <button className="btn clip" onClick={() => navigator.clipboard.writeText(`/bracket/${data.key}`)}>
+                    <button
+                        className="btn clip"
+                        onClick={() =>
+                            navigator.clipboard.writeText(`http://tier-breaker.herokuapp.com/bracket/${data.key}`)
+                        }>
                         <i className="material-icons">
                             <span className="material-icons">content_paste</span>
                         </i>
